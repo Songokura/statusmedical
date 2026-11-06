@@ -817,3 +817,28 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media (max-width:860px){.hc-slides .sl img{object-position:50% 60%}}
 
 .hirurg-ph img{object-position:50% 70%}
+
+/* акции: первая карточка - действующая, остальные - заглушки под будущие акции */
+.promo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pr-card{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:240px;padding:26px;border-radius:var(--r);border:1px solid var(--line);background:#fff}
+.pr-card h3{font-size:22px;line-height:1.2}
+.pr-card p{color:var(--mute);font-size:15px}
+.pr-card .btn,.pr-card .link{margin-top:auto}
+.pr-live{background:var(--walnut-3);border-color:var(--walnut-3);color:#fff;overflow:hidden}
+.pr-live h3{color:#fff}
+.pr-live p{color:rgba(255,255,255,.75)}
+.pr-live::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(226,205,106,.35),transparent 70%);pointer-events:none}
+.pr-tag{display:inline-flex;padding:5px 12px;border-radius:999px;background:rgba(226,205,106,.16);color:var(--gold-2);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.pr-empty{border-style:dashed;border-color:rgba(74,52,38,.28);background:repeating-linear-gradient(135deg,rgba(74,52,38,.035) 0 1px,transparent 1px 14px),#FBF8F1}
+.pr-ph img{width:56px;height:56px;opacity:.55;display:block}
+.form-h{display:block;font-size:20px;font-weight:500;color:var(--ink);margin-bottom:4px}
+.on-dark .form-h{color:#fff}
+/* карта 2ГИС */
+.map2gis{margin:20px 0 4px;border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--stone);height:clamp(280px,30vw,380px)}
+.map2gis iframe{display:block;width:100%;height:100%;border:0}
+@media (max-width:860px){
+  .promo-grid{grid-template-columns:minmax(0,1fr)}
+  .pr-card{min-height:0}
+  .map2gis{height:400px}
+  .map2gis iframe{width:140%;height:140%;transform:scale(.7143);transform-origin:0 0}
+}

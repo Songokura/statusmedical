@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261106-44">
+<link rel="stylesheet" href="styles.css?v=20261106-46">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -447,6 +447,35 @@
   </div>
 </div>
 
+
+<!-- АКЦИИ: место под акции центра, карточки-заглушки меняются на акции -->
+<section class="sec white promo" id="akcii">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker" data-i18n="pr.k">Акции</span>
+      <h2 data-i18n="pr.h2">Акции <em>и специальные предложения</em></h2>
+    </div>
+    <div class="promo-grid">
+      <article class="pr-card pr-live rv">
+        <span class="pr-tag" data-i18n="pr.1k">Чек-ап</span>
+        <h3 data-i18n="pr.1t">ЭКГ и биометрия в подарок</h3>
+        <p data-i18n="pr.1x">К любой чек-ап программе центра.</p>
+        <a class="btn gold sm" href="#chekap" data-i18n="pr.1b">Выбрать программу</a>
+      </article>
+      <article class="pr-card pr-empty rv d1"><span class="pr-ph"><img src="assets/logo.svg" alt="" width="56" height="56"></span>
+        <h3 data-i18n="pr.et">Скоро здесь новая акция</h3>
+        <p data-i18n="pr.ex">Следите за предложениями центра в Instagram.</p>
+        <a class="link" href="https://www.instagram.com/status_medical_center" target="_blank" rel="noopener"><span data-i18n="pr.eb">@status_medical_center</span></a>
+      </article>
+      <article class="pr-card pr-empty rv d2"><span class="pr-ph"><img src="assets/logo.svg" alt="" width="56" height="56"></span>
+        <h3 data-i18n="pr.et">Скоро здесь новая акция</h3>
+        <p data-i18n="pr.ex">Следите за предложениями центра в Instagram.</p>
+        <a class="link" href="https://www.instagram.com/status_medical_center" target="_blank" rel="noopener"><span data-i18n="pr.eb">@status_medical_center</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- НАПРАВЛЕНИЯ: план кабинетов -->
 <section class="sec white grid-paper" id="napravleniya">
   <div class="wrap">
@@ -708,15 +737,17 @@
         <a class="btn ghost ig-btn" href="https://www.instagram.com/status_medical_center" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#ic-ig"/></svg><span data-i18n="k.ig">Клиника в Instagram</span></a>
         <a class="btn gold wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться в Status Medical Center."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="k.b2">Написать в WhatsApp</span></a>
       </div>
-      <form class="form" id="leadForm" data-tpl="Здравствуйте. Заявка с сайта: {name}, {phone}, {dir}.">
+      <div class="map2gis"><iframe src="https://widgets.2gis.com/widget?type=firmsonmap&amp;options=%7B%22pos%22%3A%7B%22lat%22%3A49.890675%2C%22lon%22%3A82.619871%2C%22zoom%22%3A16%7D%2C%22opt%22%3A%7B%22city%22%3A%22ustkam%22%7D%2C%22org%22%3A%2270000001094610882%2C%22%7D" title="Status Medical Center на карте 2ГИС" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <form class="form" id="leadForm" data-tpl="Здравствуйте. Прошу перезвонить: {name}, {phone}. Направление: {dir}.">
+        <b class="form-h" data-i18n="k.cb">Заказать обратный звонок</b>
         <label><span data-i18n="k.f1">Имя</span><input type="text" name="name" required autocomplete="name"></label>
         <label><span data-i18n="k.f2">Телефон</span><input type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+7"></label>
         <label><span data-i18n="k.f3">Направление</span>
           <select name="dir">
             <option data-i18n="d.1t">Приём специалистов</option><option data-i18n="d.2t">УЗИ</option><option data-i18n="d.3t">Функциональная диагностика</option><option data-i18n="d.4t">Эндоскопия</option><option data-i18n="d.5t">Анализы</option><option data-i18n="c.k">Чек-ап</option><option data-i18n="d.6t">Детям</option><option data-i18n="d.7t">Женское здоровье</option><option data-i18n="d.8t">Хирургия</option><option data-i18n="d.9t">Пластическая хирургия</option><option data-i18n="d.10t">Программа снижения веса</option><option data-i18n="d.11t">Выезд на дом</option><option data-i18n="d.12t">Дневной стационар</option>
           </select></label>
-        <button class="btn gold" type="submit" data-i18n="k.send">Записаться</button>
-        <small data-i18n="k.note">Менеджер свяжется с вами в течение 15-20&nbsp;минут в рабочее время.</small>
+        <button class="btn gold" type="submit" data-i18n="k.send">Перезвоните мне</button>
+        <small data-i18n="k.note">Менеджер перезвонит в течение 15-20&nbsp;минут в рабочее время.</small>
       </form>
     </div>
   </div>
@@ -752,6 +783,6 @@
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/SplitText.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="script.js?v=20261106-44"></script>
+<script src="script.js?v=20261106-46"></script>
 </body>
 </html>
