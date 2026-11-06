@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261106-22">
+<link rel="stylesheet" href="styles.css?v=20261106-25">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -541,7 +541,7 @@
         <span class="arrow"><span data-i18n="d.go">Страница направления</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
       <article class="room-card" id="vyezd"><i class="door"></i>
-        <div class="rc-ph ph-empty"><img class="ph-logo" src="assets/logo.svg" alt="" width="72" height="72"><span data-i18n="d.ph11">Фото выезда врача</span></div>
+        <div class="rc-ph"><img src="assets/photos/svc-vyezd.webp" alt="Врач измеряет давление пациентке на дому" loading="lazy" decoding="async" width="1024" height="640"></div>
         <h3><span data-i18n="d.11t">Выезд на дом</span><span class="price" data-i18n="d.11p">от&nbsp;20&nbsp;000&nbsp;₸</span></h3>
         <p data-i18n="d.11x">Вызов врача: район КШТ 20&nbsp;000&nbsp;₸, город 25&nbsp;000&nbsp;₸. ЭКГ на дому 10&nbsp;000&nbsp;₸, Холтер и СМАД 26&nbsp;000&nbsp;₸, УЗИ 9&nbsp;000-30&nbsp;000&nbsp;₸. Заявки 08:00-18:00, в пределах города.</p>
         <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: выезд на дом. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
@@ -563,7 +563,11 @@
     <h2 data-i18n="e.h2">Оборудование <em>экспертного класса</em></h2>
     <p class="lead" data-i18n="e.lead">Два УЗИ-аппарата экспертного класса, видеоэндоскоп, комплекс Нейрон-Спектр, Холтер и СМАД - обследование проходит в этом же здании.</p>
   </div>
-  <div class="wrap">
+  <div class="wrap ride-box">
+    <div class="ride-nav" role="group" aria-label="Листать оборудование">
+      <button type="button" data-dir="-1" aria-label="Назад"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button type="button" data-dir="1" aria-label="Вперёд"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
     <div class="ride-track" id="rideTrack" tabindex="0">
       <article class="ride-card"><img src="assets/photos/foto-33.webp" alt="Кабинет УЗИ" loading="lazy" width="960" height="1280"><div class="cap"><h3>Esaote MyLab Seven</h3><p data-i18n="e.1">УЗИ внутренних органов, сосудов, суставов, сердца.</p></div></article>
       <article class="ride-card screen"><i class="grid"></i>
@@ -581,10 +585,6 @@
       <article class="ride-card screen"><i class="grid"></i>
         <svg viewBox="0 0 300 220" aria-hidden="true"><g stroke="rgba(255,255,255,.25)" stroke-width="1"><path d="M30 180 H280"/><path d="M30 30 V180"/></g><path class="spiro" d="M30 180 C34 120 44 60 62 44 C80 34 100 70 130 100 C170 136 220 162 270 180 C220 196 120 206 30 180 Z"/></svg>
         <div class="cap"><h3 data-i18n="e.6t">Спирометрия The Spirokit</h3><p data-i18n="e.6">Ранняя диагностика ХОБЛ, по соглашению с TR Corporation (Корея), 29.10.2026.</p></div></article>
-    </div>
-    <div class="ride-nav">
-      <button type="button" data-dir="-1" aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
-      <button type="button" data-dir="1" aria-label="Вперёд"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
   </div>
 </section>
@@ -648,7 +648,7 @@
     </ul>
     <p style="margin-top:36px"><a class="btn gold wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться в Status Medical Center."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="z.btn">Написать в WhatsApp</span></a></p>
       </div>
-      <figure class="zapis-ph rv"><img src="assets/photos/foto-5.webp" alt="Регистратура Status Medical Center" loading="lazy" decoding="async" width="722" height="1280"></figure>
+      <figure class="zapis-ph rv"><img src="assets/photos/bg-12.webp" alt="Фирменная стена с логотипом Status Medical Center" loading="lazy" decoding="async" width="1280" height="960"></figure>
     </div>
   </div>
 </section>
@@ -732,6 +732,6 @@
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/SplitText.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="script.js?v=20261106-22"></script>
+<script src="script.js?v=20261106-25"></script>
 </body>
 </html>
