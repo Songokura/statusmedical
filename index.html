@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261106-27">
+<link rel="stylesheet" href="styles.css?v=20261106-34">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -127,33 +127,177 @@
 
 <main id="top">
 
-<!-- ГЕРОЙ: один визит - маршрут чек-апа по кабинетам -->
-<section class="hero hero-visit">
-  <div class="hero-light"></div>
-  <div class="wrap hero-grid">
+<!-- ГЕРОЙ: чек-ап за один день - главный оффер -->
+<section class="hero hero-chk on-dark">
+  <picture class="hc-photo">
+    <source media="(max-width:860px)" srcset="assets/photos/hero-doc-m.webp">
+    <img src="assets/photos/hero-doc.webp" alt="Елеубекова Асем Емелбековна, главный врач, кардиолог Status Medical Center" width="962" height="1202" fetchpriority="high" decoding="async">
+  </picture>
+  <div class="hc-shade"></div>
+  <svg class="hc-ecg" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path class="bg" d="M0 70 H330 l18 -8 l14 8 h40 l12 -48 l16 92 l14 -60 l10 16 h60 l22 -10 l20 10 H760 l18 -8 l14 8 h40 l12 -48 l16 92 l14 -60 l10 16 h60 l22 -10 l20 10 H1200"/><path class="fg" d="M0 70 H330 l18 -8 l14 8 h40 l12 -48 l16 92 l14 -60 l10 16 h60 l22 -10 l20 10 H760 l18 -8 l14 8 h40 l12 -48 l16 92 l14 -60 l10 16 h60 l22 -10 l20 10 H1200"/></svg>
+  <div class="wrap hc-grid">
     <div class="hero-text">
       <span class="kicker" data-i18n="h.kicker">Медицинский центр · Усть-Каменогорск</span>
-      <h1 class="split" data-i18n="h.h1">Врачи, УЗИ и анализы <em>за&nbsp;один визит</em></h1>
-      <p class="lead" data-i18n="h.lead">27&nbsp;специальностей врачей, УЗИ, ЭКГ, анализы и эндоскопия - в одном здании на Кокжал Барака, 19.<span class="lead-tail"> Запись в WhatsApp - ответ за <span class="nw">15-20&nbsp;минут</span>.</span></p>
+      <h1 class="split" data-i18n="h.h1">Чек-ап организма <em>за&nbsp;один день</em></h1>
+      <p class="hc-price" data-i18n="h.price">от&nbsp;25&nbsp;000&nbsp;₸ · врачи, УЗИ и&nbsp;анализы в&nbsp;одном здании</p>
+      <ul class="hc-list">
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i18n="h.b1">Состав и цена каждой программы открыты</span></li>
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i18n="h.b2">ЭКГ и биометрия - в подарок к программе</span></li>
+        <li><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i18n="h.b3">Kaspi рассрочка 0-3-6-12&nbsp;месяцев</span></li>
+      </ul>
       <div class="hero-btns">
-        <a class="btn gold wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться в Status Medical Center."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="h.btn1">Записаться в WhatsApp</span></a>
-        <a class="btn ghost" href="#serdce" data-i18n="h.btn4">Чек-ап за 1 день</a>
+        <a class="btn gold wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап. Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="h.btn5">Записаться на чек-ап</span></a>
+        <a class="btn ghost" href="#chekap" data-i18n="h.btn6">Все программы и цены</a>
       </div>
       <a class="hero-ig link" href="https://www.instagram.com/status_medical_center" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#ic-ig"/></svg><span data-i18n="h.ig">Клиника и врачи в Instagram →</span></a>
     </div>
-    <div class="visit" id="visit">
-      <div class="visit-head">
-        <span class="visit-k" data-i18n="hv.k">Маршрут одного визита</span>
-        <b data-i18n="hv.h">Чек-ап «Здоровое сердце»</b>
-      </div>
-      <ol class="visit-steps"><li class="vs-line" aria-hidden="true"><i></i></li>
-          <li class="vs"><span class="vs-mark"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="vs-ph"><img src="assets/photos/vs-reg.webp" alt="" width="200" height="200" decoding="async"></span><span class="vs-t"><b data-i18n="hv.1t">Регистратура</b><small data-i18n="hv.1x">Центр открыт с&nbsp;08:00</small></span></li>
-          <li class="vs"><span class="vs-mark"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="vs-ph"><img src="assets/photos/vs-ekg.webp" alt="" width="200" height="200" decoding="async"></span><span class="vs-t"><b data-i18n="hv.2t">ЭКГ с расшифровкой</b><small data-i18n="hv.2x">Кабинет функциональной диагностики</small></span></li>
-          <li class="vs"><span class="vs-mark"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="vs-ph"><img src="assets/photos/vs-uzi.webp" alt="" width="200" height="200" decoding="async"></span><span class="vs-t"><b data-i18n="hv.3t">УЗИ сердца</b><small data-i18n="hv.3x">Кабинет УЗИ</small></span></li>
-          <li class="vs"><span class="vs-mark"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="vs-ph"><img src="assets/photos/vs-kard.webp" alt="" width="200" height="200" decoding="async"></span><span class="vs-t"><b data-i18n="hv.4t">Консультация кардиолога</b><small data-i18n="hv.4x">Кардиолог центра</small></span></li>
-          <li class="vs"><span class="vs-mark"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="vs-ph icon"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M9.5 12h6M9.5 15.5h6M9.5 8.5h2.5"/></svg></span><span class="vs-t"><b data-i18n="hv.5t">Заключение врача</b><small data-i18n="hv.5x">В тот же день</small></span></li>
-      </ol>
-      <a class="visit-total" href="#serdce"><span class="num">25&nbsp;000&nbsp;₸</span><span data-i18n="hv.tot">один визит, без поездок по городу</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+
+  <div class="hc-side">
+    <div class="hc-stack" id="hcStack">
+      <span class="hc-stack-k" data-i18n="h.stk">Программы чек-апа</span>
+      <ol><li><a href="#chekap"><span data-i18n="c.1t">«Здоровое сердце» за 1 день</span><b class="num">25&nbsp;000&nbsp;₸</b></a></li><li><a href="#chekap"><span data-i18n="c.2t">«Щитовидка без тревог»</span><b class="num">47&nbsp;400&nbsp;₸</b></a></li><li><a href="#chekap"><span data-i18n="c.3t">Check-up Гастро</span><b class="num">73&nbsp;620&nbsp;₸</b></a></li><li><a href="#chekap"><span data-i18n="c.4t">Check-up Детский</span><b class="num">107&nbsp;780&nbsp;₸</b></a></li><li><a href="#chekap"><span data-i18n="c.5t">«В здоровом теле - здоровый дух», для женщин</span><b class="num">156&nbsp;100&nbsp;₸</b></a></li><li><a href="#chekap"><span data-i18n="c.6t">«В здоровом теле - здоровый дух», для мужчин</span><b class="num">186&nbsp;900&nbsp;₸</b></a></li></ol>
+    </div>
+    <span class="hc-tag" data-i18n="h.tag">Елеубекова А.&nbsp;Е., главный врач, кардиолог</span>
+  </div>
+</section>
+
+<!-- ЧЕК-АП -->
+<section class="sec stone" id="chekap">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker" data-i18n="c.k">Чек-ап</span>
+      <h2 data-i18n="c.h2">Чек-ап программы: обследование <em>за один визит</em></h2>
+      <p class="lead" data-i18n="c.lead">Состав и цена каждой программы открыты. ЭКГ и биометрия - в подарок к программе. Подготовка: ужин накануне до&nbsp;20:00, утром натощак, без алкоголя за сутки.</p>
+    </div>
+    <div class="g3">
+      <article class="room-card hi" id="serdce"><div class="wall"></div><i class="door"></i>
+        <div class="card-top"><h3 data-i18n="c.1t">«Здоровое сердце» за 1 день</h3><span class="price num">25&nbsp;000&nbsp;₸</span></div>
+        <ul class="compose one"><li data-i18n="c.1a">Консультация кардиолога</li><li data-i18n="c.1b">УЗИ сердца</li><li data-i18n="c.1c">ЭКГ</li></ul>
+        <a class="btn gold wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «Здоровое сердце за 1 день». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
+      </article>
+      <article class="room-card"><div class="wall"></div><i class="door"></i>
+        <div class="card-top"><h3 data-i18n="c.2t">«Щитовидка без тревог»</h3><span class="price num">47&nbsp;400&nbsp;₸</span></div>
+        <ul class="compose"><li data-i18n="c.2a">Первичный прием эндокринолога</li><li data-i18n="c.2b">УЗИ щитовидной железы</li><li data-i18n="c.2c">Биометрия</li><li data-i18n="c.2d">Тиреотропного гормона (ТТГ)</li><li data-i18n="c.2e">Свободный тироксин (FT4)</li><li data-i18n="c.2f">Антитела к тиреопероксидазе (Анти-ТПО)</li><li data-i18n="c.2g">Ферритин</li><li data-i18n="c.2h">Клинический анализ крови с лейкоцитарной формулой и измерением скорости оседания эритроцитов (ОАК + СОЭ)</li><li data-i18n="c.2i">25-OH витамин D</li><li data-i18n="c.2j">Забор крови</li><li data-i18n="c.2k">ЭКГ</li></ul>
+        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «Щитовидка без тревог». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
+      </article>
+      <article class="room-card"><div class="wall"></div><i class="door"></i>
+        <div class="card-top"><h3 data-i18n="c.3t">Check-up Гастро</h3><span class="price num">73&nbsp;620&nbsp;₸</span></div>
+        <ul class="compose"><li data-i18n="c.3a">УЗИ органов брюшной полости (комплекс)</li><li data-i18n="c.3b">ФГДС</li><li data-i18n="c.3c">Первичный прием гастроэнтеролога</li><li data-i18n="c.3d">Первичный прием терапевта</li><li data-i18n="c.3e">Развёрнутый общий анализ крови с СОЭ</li><li data-i18n="c.3f">Аланинаминотрансфераза (АЛТ)</li><li data-i18n="c.3g">АСТ</li><li data-i18n="c.3h">Общий билирубин</li><li data-i18n="c.3i">Щелочная фосфотаза</li><li data-i18n="c.3j">Общая альфа-амилаза</li><li data-i18n="c.3k">Липаза</li><li data-i18n="c.3l">Хеликобактер при ФГДС</li><li data-i18n="c.3m">Забор крови</li><li data-i18n="c.3n">Глюкоза (сахар крови)</li><li data-i18n="c.3o">Биометрия</li></ul>
+        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «Check-up Гастро». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
+      </article>
+      <article class="room-card"><div class="wall"></div><i class="door"></i>
+        <div class="card-top"><h3 data-i18n="c.4t">Check-up Детский</h3><span class="price num">107&nbsp;780&nbsp;₸</span></div>
+        <ul class="compose"><li data-i18n="c.4a">ОАК с СОЭ</li><li data-i18n="c.4b">ОАМ</li><li data-i18n="c.4c">Ферритин</li><li data-i18n="c.4d">Забор крови</li><li data-i18n="c.4e">25 ОН Витамин D</li><li data-i18n="c.4f">ТТГ</li><li data-i18n="c.4g">УЗИ ОБП</li><li data-i18n="c.4h">УЗИ щитовидной железы</li><li data-i18n="c.4i">1 прием лора</li><li data-i18n="c.4j">1 прием детского хирурга</li><li data-i18n="c.4k">1 прием детского гинеколога/уролога</li><li data-i18n="c.4l">1 прием логопеда</li><li data-i18n="c.4m">ЭКГ</li><li data-i18n="c.4n">Педиатр</li><li data-i18n="c.4o">Педиатр повторный прием</li><li data-i18n="c.4p">1 прием эндокринолога</li><li data-i18n="c.4q">Биометрия</li></ul>
+        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «Check-up Детский». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
+      </article>
+      <article class="room-card"><div class="wall"></div><i class="door"></i>
+        <div class="card-top"><h3 data-i18n="c.5t">«В здоровом теле - здоровый дух», для женщин</h3><span class="price num">156&nbsp;100&nbsp;₸</span></div>
+        <ul class="compose"><li data-i18n="c.5a">Эхо-КГ</li><li data-i18n="c.5b">УЗДГ БЦА</li><li data-i18n="c.5c">УЗИ брюшной полости, малого таза, молочных и щитовидной желёз</li><li data-i18n="c.5d">ФГДС с определением Helicobacter</li><li data-i18n="c.5e">Анализы</li><li data-i18n="c.5f">Консультации гинеколога, невролога, онколога-маммолога, эндокринолога, терапевта</li><li data-i18n="c.5g">ЭКГ и биометрия в подарок</li></ul>
+        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «В здоровом теле - здоровый дух, для женщин». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
+      </article>
+      <article class="room-card"><div class="wall"></div><i class="door"></i>
+        <div class="card-top"><h3 data-i18n="c.6t">«В здоровом теле - здоровый дух», для мужчин</h3><span class="price num">186&nbsp;900&nbsp;₸</span></div>
+        <ul class="compose"><li data-i18n="c.6a">Тот же состав, вместо гинеколога и маммолога - УЗИ простаты, ПСА, консультации уролога и хирурга</li><li data-i18n="c.5g">ЭКГ и биометрия в подарок</li></ul>
+        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «В здоровом теле - здоровый дух, для мужчин». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
+      </article>
+    </div>
+    <p class="note" data-i18n="c.note">Платные программы - для неприкреплённого населения. Прикреплённые пациенты обслуживаются по ОСМС и ГОБМП.</p>
+  </div>
+</section>
+
+<div class="facts" aria-label="Факты о центре">
+  <div class="wrap">
+    <ul class="facts-list">
+      <li data-i18n="f.1">Более 40 специалистов</li>
+      <li class="outline" data-i18n="f.2">2 УЗИ-аппарата экспертного класса</li>
+      <li data-i18n="f.3">Операционный блок и дневной стационар</li>
+      <li class="outline" data-i18n="f.4">Kaspi рассрочка 0-3-6-12&nbsp;месяцев</li>
+    </ul>
+  </div>
+</div>
+
+<!-- НАПРАВЛЕНИЯ: план кабинетов -->
+<section class="sec white grid-paper" id="napravleniya">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker" data-i18n="d.k">Направления</span>
+      <h2 data-i18n="d.h2">Направления <em>и цены</em></h2>
+      <p class="lead" data-i18n="d.lead">Приём первичный - 10&nbsp;000&nbsp;₸, врач высшей категории - 15&nbsp;000&nbsp;₸, повторный приём - 8&nbsp;000&nbsp;₸. Консультации главных специалистов ВКО - 15&nbsp;000-20&nbsp;000&nbsp;₸.</p>
+    </div>
+    <div class="plan">
+      <article class="room-card span2" id="priem"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/foto-34.webp" alt="Кабинет врача в Status Medical Center" loading="lazy" decoding="async" width="2000" height="1125"></div>
+        <h3><span data-i18n="d.1t">Приём специалистов</span><span class="price" data-i18n="d.1p">от&nbsp;8&nbsp;000&nbsp;₸</span></h3>
+        <p data-i18n="d.1x">Терапевт, ВОП, кардиолог, эндокринолог, гастроэнтеролог, невролог, пульмонолог, гематолог, онкогематолог, ревматолог, нефролог, аллерголог, уролог, акушер-гинеколог, маммолог-онколог, онколог, дерматовенеролог, трихолог, ЛОР, офтальмолог, травматолог-ортопед, хирург, проктолог, фтизиатр, генетик, психолог, врач интегративной медицины.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: приём специалиста. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
+      <article class="room-card" id="uzi"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/svc-uzi.webp" alt="Врач проводит УЗИ в центре" loading="lazy" decoding="async" width="900" height="562"></div>
+        <h3><span data-i18n="d.2t">УЗИ</span><span class="price" data-i18n="d.2p">от&nbsp;4&nbsp;000&nbsp;₸</span></h3>
+        <p data-i18n="d.2x">Esaote MyLab Seven и Canon: брюшная полость 14&nbsp;000&nbsp;₸, щитовидная железа 7&nbsp;500&nbsp;₸, почки 6&nbsp;000&nbsp;₸, малый таз 9&nbsp;000&nbsp;₸, молочные железы 7&nbsp;500&nbsp;₸, сосуды 6&nbsp;000-12&nbsp;000&nbsp;₸, суставы 8&nbsp;000&nbsp;₸, Эхо-КГ 12&nbsp;000&nbsp;₸, акушерские УЗИ 9&nbsp;000&nbsp;₸.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: УЗИ. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
+      <article class="room-card" id="diagnostika"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/svc-diag.webp" alt="Комплекс Нейрон-Спектр в кабинете функциональной диагностики" loading="lazy" decoding="async" width="707" height="441"></div>
+        <h3><span data-i18n="d.3t">Функциональная диагностика</span><span class="price" data-i18n="d.3p">от&nbsp;3&nbsp;000&nbsp;₸</span></h3>
+        <p data-i18n="d.3x">ЭКГ с расшифровкой 3&nbsp;000&nbsp;₸, ЭКГ с нагрузкой 4&nbsp;000&nbsp;₸, Холтер 14&nbsp;000&nbsp;₸, СМАД 14&nbsp;000&nbsp;₸, ЭЭГ от&nbsp;15&nbsp;000&nbsp;₸, КТГ 5&nbsp;500&nbsp;₸.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: функциональная диагностика. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
+      <article class="room-card" id="endoskopiya"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/svc-endo.webp" alt="Видеоэндоскопическая стойка центра" loading="lazy" decoding="async" width="750" height="468"></div>
+        <h3><span data-i18n="d.4t">Эндоскопия</span><span class="price" data-i18n="d.4p">от&nbsp;21&nbsp;000&nbsp;₸</span></h3>
+        <p data-i18n="d.4x">ФГДС с определением Helicobacter 21&nbsp;000&nbsp;₸, видеоколоноскопия 22&nbsp;000-25&nbsp;000&nbsp;₸, биопсия при ФГДС.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: эндоскопия. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
+      <article class="room-card" id="analizy"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/svc-analizy.webp" alt="Пробирки с анализами" loading="lazy" decoding="async" width="900" height="562"></div>
+        <h3><span data-i18n="d.5t">Анализы</span><span class="price" data-i18n="d.5p">забор в центре, лаборатория Invivo</span></h3>
+        <p data-i18n="d.5x">Забор крови 1&nbsp;000&nbsp;₸, более 1&nbsp;400 позиций, готовые панели: диагностика ожирения, гормональный фон, генетика веса.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: анализы. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
+      <article class="room-card span2" id="deti"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/svc-deti.webp" alt="Приём ребёнка в детском кабинете" loading="lazy" decoding="async" width="799" height="499"></div>
+        <h3><span data-i18n="d.6t">Детям</span></h3>
+        <p data-i18n="d.6x">Педиатр, детский эндокринолог, гастроэнтеролог, гинеколог, уролог, хирург, хирург-уролог, детский ЛОР, логопед. Программа «Малютка» - наблюдение от рождения до&nbsp;1&nbsp;года: 11 визитов к педиатру, 8 УЗИ, 8 специалистов - 366&nbsp;000&nbsp;₸, биометрия одному родителю в подарок. Логопед, 12&nbsp;занятий - 70&nbsp;000&nbsp;₸.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: детский приём. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
+      <article class="room-card" id="ginekologiya"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/svc-gin.webp" alt="Аппарат КТГ в кабинете гинеколога" loading="lazy" decoding="async" width="750" height="468"></div>
+        <h3><span data-i18n="d.7t">Женское здоровье</span></h3>
+        <p data-i18n="d.7x">Акушер-гинеколог, кольпоскопия 8&nbsp;500&nbsp;₸, УЗИ Canon, КТГ. Наблюдение беременности, 2-3 триместр - 280&nbsp;000&nbsp;₸.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: женское здоровье. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
+      <article class="room-card" id="hirurgiya"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/svc-hir.webp" alt="Хирурги в операционной" loading="lazy" decoding="async" width="900" height="562"></div>
+        <h3><span data-i18n="d.8t">Хирургия</span></h3>
+        <p data-i18n="d.8x">Операционный блок, дневной стационар, малоинвазивные вмешательства. Удаление липом, атером, фибром - 30&nbsp;000-120&nbsp;000&nbsp;₸, вросший ноготь 17&nbsp;000&nbsp;₸, циркумцизия детям 35&nbsp;000&nbsp;₸.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: хирургия. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
+      <a class="room-card door-card" href="plastika/" id="plastika">
+        <div class="rc-ph"><img src="assets/photos/svc-plast.webp" alt="Пластическая хирургия лица" loading="lazy" decoding="async" width="900" height="562"></div>
+        <h3><span data-i18n="d.9t">Пластическая хирургия</span><span class="price" data-i18n="d.9p">от&nbsp;150&nbsp;000&nbsp;₸</span></h3>
+        <p data-i18n="d.9x">Блефаропластика, отопластика, булхорн, нитевой лифтинг. Хирург - Акшолаков М. К., 15&nbsp;лет стажа.</p>
+        <span class="arrow"><span data-i18n="d.go">Страница направления</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="room-card door-card" href="pohudenie/" id="pohudenie">
+        <div class="rc-ph"><img src="assets/photos/svc-pohud.webp" alt="Сбалансированное питание" loading="lazy" decoding="async" width="900" height="562"></div>
+        <h3><span data-i18n="d.10t">Программа снижения веса</span><span class="price" data-i18n="d.10p">от&nbsp;55&nbsp;000&nbsp;₸</span></h3>
+        <p data-i18n="d.10x">Три этапа: диагностика, углублённая диагностика, лечение 3&nbsp;месяца под наблюдением эндокринолога, гастроэнтеролога и психолога.</p>
+        <span class="arrow"><span data-i18n="d.go">Страница направления</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <article class="room-card" id="vyezd"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/svc-vyezd.webp" alt="Врач измеряет давление пациентке на дому" loading="lazy" decoding="async" width="1024" height="640"></div>
+        <h3><span data-i18n="d.11t">Выезд на дом</span><span class="price" data-i18n="d.11p">от&nbsp;20&nbsp;000&nbsp;₸</span></h3>
+        <p data-i18n="d.11x">Вызов врача: район КШТ 20&nbsp;000&nbsp;₸, город 25&nbsp;000&nbsp;₸. ЭКГ на дому 10&nbsp;000&nbsp;₸, Холтер и СМАД 26&nbsp;000&nbsp;₸, УЗИ 9&nbsp;000-30&nbsp;000&nbsp;₸. Заявки 08:00-18:00, в пределах города.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: выезд на дом. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
+      <article class="room-card" id="stacionar"><i class="door"></i>
+        <div class="rc-ph"><img src="assets/photos/svc-stac.webp" alt="Палата стационара" loading="lazy" decoding="async" width="900" height="562"></div>
+        <h3><span data-i18n="d.12t">Дневной стационар</span></h3>
+        <p data-i18n="d.12x">Капельницы и лечение по назначению врача, 5&nbsp;000-25&nbsp;000&nbsp;₸. Медицинские справки - 15&nbsp;000&nbsp;₸.</p>
+        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: дневной стационар. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
+      </article>
     </div>
   </div>
 </section>
@@ -428,146 +572,6 @@
   </div>
 </section>
 
-<div class="facts" aria-label="Факты о центре">
-  <div class="wrap">
-    <ul class="facts-list">
-      <li data-i18n="f.1">Более 40 специалистов</li>
-      <li class="outline" data-i18n="f.2">2 УЗИ-аппарата экспертного класса</li>
-      <li data-i18n="f.3">Операционный блок и дневной стационар</li>
-      <li class="outline" data-i18n="f.4">Kaspi рассрочка 0-3-6-12&nbsp;месяцев</li>
-    </ul>
-  </div>
-</div>
-
-<!-- ЧЕК-АП -->
-<section class="sec stone" id="chekap">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="kicker" data-i18n="c.k">Чек-ап</span>
-      <h2 data-i18n="c.h2">Чек-ап программы: обследование <em>за один визит</em></h2>
-      <p class="lead" data-i18n="c.lead">Состав и цена каждой программы открыты. ЭКГ и биометрия - в подарок к программе. Подготовка: ужин накануне до&nbsp;20:00, утром натощак, без алкоголя за сутки.</p>
-    </div>
-    <div class="g3">
-      <article class="room-card hi" id="serdce"><div class="wall"></div><i class="door"></i>
-        <div class="card-top"><h3 data-i18n="c.1t">«Здоровое сердце» за 1 день</h3><span class="price num">25&nbsp;000&nbsp;₸</span></div>
-        <ul class="compose one"><li data-i18n="c.1a">Консультация кардиолога</li><li data-i18n="c.1b">УЗИ сердца</li><li data-i18n="c.1c">ЭКГ</li></ul>
-        <a class="btn gold wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «Здоровое сердце за 1 день». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
-      </article>
-      <article class="room-card"><div class="wall"></div><i class="door"></i>
-        <div class="card-top"><h3 data-i18n="c.2t">«Щитовидка без тревог»</h3><span class="price num">47&nbsp;400&nbsp;₸</span></div>
-        <ul class="compose"><li data-i18n="c.2a">Первичный прием эндокринолога</li><li data-i18n="c.2b">УЗИ щитовидной железы</li><li data-i18n="c.2c">Биометрия</li><li data-i18n="c.2d">Тиреотропного гормона (ТТГ)</li><li data-i18n="c.2e">Свободный тироксин (FT4)</li><li data-i18n="c.2f">Антитела к тиреопероксидазе (Анти-ТПО)</li><li data-i18n="c.2g">Ферритин</li><li data-i18n="c.2h">Клинический анализ крови с лейкоцитарной формулой и измерением скорости оседания эритроцитов (ОАК + СОЭ)</li><li data-i18n="c.2i">25-OH витамин D</li><li data-i18n="c.2j">Забор крови</li><li data-i18n="c.2k">ЭКГ</li></ul>
-        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «Щитовидка без тревог». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
-      </article>
-      <article class="room-card"><div class="wall"></div><i class="door"></i>
-        <div class="card-top"><h3 data-i18n="c.3t">Check-up Гастро</h3><span class="price num">73&nbsp;620&nbsp;₸</span></div>
-        <ul class="compose"><li data-i18n="c.3a">УЗИ органов брюшной полости (комплекс)</li><li data-i18n="c.3b">ФГДС</li><li data-i18n="c.3c">Первичный прием гастроэнтеролога</li><li data-i18n="c.3d">Первичный прием терапевта</li><li data-i18n="c.3e">Развёрнутый общий анализ крови с СОЭ</li><li data-i18n="c.3f">Аланинаминотрансфераза (АЛТ)</li><li data-i18n="c.3g">АСТ</li><li data-i18n="c.3h">Общий билирубин</li><li data-i18n="c.3i">Щелочная фосфотаза</li><li data-i18n="c.3j">Общая альфа-амилаза</li><li data-i18n="c.3k">Липаза</li><li data-i18n="c.3l">Хеликобактер при ФГДС</li><li data-i18n="c.3m">Забор крови</li><li data-i18n="c.3n">Глюкоза (сахар крови)</li><li data-i18n="c.3o">Биометрия</li></ul>
-        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «Check-up Гастро». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
-      </article>
-      <article class="room-card"><div class="wall"></div><i class="door"></i>
-        <div class="card-top"><h3 data-i18n="c.4t">Check-up Детский</h3><span class="price num">107&nbsp;780&nbsp;₸</span></div>
-        <ul class="compose"><li data-i18n="c.4a">ОАК с СОЭ</li><li data-i18n="c.4b">ОАМ</li><li data-i18n="c.4c">Ферритин</li><li data-i18n="c.4d">Забор крови</li><li data-i18n="c.4e">25 ОН Витамин D</li><li data-i18n="c.4f">ТТГ</li><li data-i18n="c.4g">УЗИ ОБП</li><li data-i18n="c.4h">УЗИ щитовидной железы</li><li data-i18n="c.4i">1 прием лора</li><li data-i18n="c.4j">1 прием детского хирурга</li><li data-i18n="c.4k">1 прием детского гинеколога/уролога</li><li data-i18n="c.4l">1 прием логопеда</li><li data-i18n="c.4m">ЭКГ</li><li data-i18n="c.4n">Педиатр</li><li data-i18n="c.4o">Педиатр повторный прием</li><li data-i18n="c.4p">1 прием эндокринолога</li><li data-i18n="c.4q">Биометрия</li></ul>
-        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «Check-up Детский». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
-      </article>
-      <article class="room-card"><div class="wall"></div><i class="door"></i>
-        <div class="card-top"><h3 data-i18n="c.5t">«В здоровом теле - здоровый дух», для женщин</h3><span class="price num">156&nbsp;100&nbsp;₸</span></div>
-        <ul class="compose"><li data-i18n="c.5a">Эхо-КГ</li><li data-i18n="c.5b">УЗДГ БЦА</li><li data-i18n="c.5c">УЗИ брюшной полости, малого таза, молочных и щитовидной желёз</li><li data-i18n="c.5d">ФГДС с определением Helicobacter</li><li data-i18n="c.5e">Анализы</li><li data-i18n="c.5f">Консультации гинеколога, невролога, онколога-маммолога, эндокринолога, терапевта</li><li data-i18n="c.5g">ЭКГ и биометрия в подарок</li></ul>
-        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «В здоровом теле - здоровый дух, для женщин». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
-      </article>
-      <article class="room-card"><div class="wall"></div><i class="door"></i>
-        <div class="card-top"><h3 data-i18n="c.6t">«В здоровом теле - здоровый дух», для мужчин</h3><span class="price num">186&nbsp;900&nbsp;₸</span></div>
-        <ul class="compose"><li data-i18n="c.6a">Тот же состав, вместо гинеколога и маммолога - УЗИ простаты, ПСА, консультации уролога и хирурга</li><li data-i18n="c.5g">ЭКГ и биометрия в подарок</li></ul>
-        <a class="btn wa sm" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться на чек-ап «В здоровом теле - здоровый дух, для мужчин». Подскажите ближайшую дату."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="c.btn">Записаться на чек-ап</span></a>
-      </article>
-    </div>
-    <p class="note" data-i18n="c.note">Платные программы - для неприкреплённого населения. Прикреплённые пациенты обслуживаются по ОСМС и ГОБМП.</p>
-  </div>
-</section>
-
-<!-- НАПРАВЛЕНИЯ: план кабинетов -->
-<section class="sec white grid-paper" id="napravleniya">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="kicker" data-i18n="d.k">Направления</span>
-      <h2 data-i18n="d.h2">Направления <em>и цены</em></h2>
-      <p class="lead" data-i18n="d.lead">Приём первичный - 10&nbsp;000&nbsp;₸, врач высшей категории - 15&nbsp;000&nbsp;₸, повторный приём - 8&nbsp;000&nbsp;₸. Консультации главных специалистов ВКО - 15&nbsp;000-20&nbsp;000&nbsp;₸.</p>
-    </div>
-    <div class="plan">
-      <article class="room-card span2" id="priem"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/foto-34.webp" alt="Кабинет врача в Status Medical Center" loading="lazy" decoding="async" width="2000" height="1125"></div>
-        <h3><span data-i18n="d.1t">Приём специалистов</span><span class="price" data-i18n="d.1p">от&nbsp;8&nbsp;000&nbsp;₸</span></h3>
-        <p data-i18n="d.1x">Терапевт, ВОП, кардиолог, эндокринолог, гастроэнтеролог, невролог, пульмонолог, гематолог, онкогематолог, ревматолог, нефролог, аллерголог, уролог, акушер-гинеколог, маммолог-онколог, онколог, дерматовенеролог, трихолог, ЛОР, офтальмолог, травматолог-ортопед, хирург, проктолог, фтизиатр, генетик, психолог, врач интегративной медицины.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: приём специалиста. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-      <article class="room-card" id="uzi"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/svc-uzi.webp" alt="Врач проводит УЗИ в центре" loading="lazy" decoding="async" width="900" height="562"></div>
-        <h3><span data-i18n="d.2t">УЗИ</span><span class="price" data-i18n="d.2p">от&nbsp;4&nbsp;000&nbsp;₸</span></h3>
-        <p data-i18n="d.2x">Esaote MyLab Seven и Canon: брюшная полость 14&nbsp;000&nbsp;₸, щитовидная железа 7&nbsp;500&nbsp;₸, почки 6&nbsp;000&nbsp;₸, малый таз 9&nbsp;000&nbsp;₸, молочные железы 7&nbsp;500&nbsp;₸, сосуды 6&nbsp;000-12&nbsp;000&nbsp;₸, суставы 8&nbsp;000&nbsp;₸, Эхо-КГ 12&nbsp;000&nbsp;₸, акушерские УЗИ 9&nbsp;000&nbsp;₸.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: УЗИ. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-      <article class="room-card" id="diagnostika"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/svc-diag.webp" alt="Комплекс Нейрон-Спектр в кабинете функциональной диагностики" loading="lazy" decoding="async" width="707" height="441"></div>
-        <h3><span data-i18n="d.3t">Функциональная диагностика</span><span class="price" data-i18n="d.3p">от&nbsp;3&nbsp;000&nbsp;₸</span></h3>
-        <p data-i18n="d.3x">ЭКГ с расшифровкой 3&nbsp;000&nbsp;₸, ЭКГ с нагрузкой 4&nbsp;000&nbsp;₸, Холтер 14&nbsp;000&nbsp;₸, СМАД 14&nbsp;000&nbsp;₸, ЭЭГ от&nbsp;15&nbsp;000&nbsp;₸, КТГ 5&nbsp;500&nbsp;₸.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: функциональная диагностика. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-      <article class="room-card" id="endoskopiya"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/svc-endo.webp" alt="Видеоэндоскопическая стойка центра" loading="lazy" decoding="async" width="750" height="468"></div>
-        <h3><span data-i18n="d.4t">Эндоскопия</span><span class="price" data-i18n="d.4p">от&nbsp;21&nbsp;000&nbsp;₸</span></h3>
-        <p data-i18n="d.4x">ФГДС с определением Helicobacter 21&nbsp;000&nbsp;₸, видеоколоноскопия 22&nbsp;000-25&nbsp;000&nbsp;₸, биопсия при ФГДС.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: эндоскопия. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-      <article class="room-card" id="analizy"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/svc-analizy.webp" alt="Пробирки с анализами" loading="lazy" decoding="async" width="900" height="562"></div>
-        <h3><span data-i18n="d.5t">Анализы</span><span class="price" data-i18n="d.5p">забор в центре, лаборатория Invivo</span></h3>
-        <p data-i18n="d.5x">Забор крови 1&nbsp;000&nbsp;₸, более 1&nbsp;400 позиций, готовые панели: диагностика ожирения, гормональный фон, генетика веса.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: анализы. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-      <article class="room-card span2" id="deti"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/svc-deti.webp" alt="Приём ребёнка в детском кабинете" loading="lazy" decoding="async" width="799" height="499"></div>
-        <h3><span data-i18n="d.6t">Детям</span></h3>
-        <p data-i18n="d.6x">Педиатр, детский эндокринолог, гастроэнтеролог, гинеколог, уролог, хирург, хирург-уролог, детский ЛОР, логопед. Программа «Малютка» - наблюдение от рождения до&nbsp;1&nbsp;года: 11 визитов к педиатру, 8 УЗИ, 8 специалистов - 366&nbsp;000&nbsp;₸, биометрия одному родителю в подарок. Логопед, 12&nbsp;занятий - 70&nbsp;000&nbsp;₸.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: детский приём. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-      <article class="room-card" id="ginekologiya"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/svc-gin.webp" alt="Аппарат КТГ в кабинете гинеколога" loading="lazy" decoding="async" width="750" height="468"></div>
-        <h3><span data-i18n="d.7t">Женское здоровье</span></h3>
-        <p data-i18n="d.7x">Акушер-гинеколог, кольпоскопия 8&nbsp;500&nbsp;₸, УЗИ Canon, КТГ. Наблюдение беременности, 2-3 триместр - 280&nbsp;000&nbsp;₸.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: женское здоровье. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-      <article class="room-card" id="hirurgiya"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/svc-hir.webp" alt="Хирурги в операционной" loading="lazy" decoding="async" width="900" height="562"></div>
-        <h3><span data-i18n="d.8t">Хирургия</span></h3>
-        <p data-i18n="d.8x">Операционный блок, дневной стационар, малоинвазивные вмешательства. Удаление липом, атером, фибром - 30&nbsp;000-120&nbsp;000&nbsp;₸, вросший ноготь 17&nbsp;000&nbsp;₸, циркумцизия детям 35&nbsp;000&nbsp;₸.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: хирургия. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-      <a class="room-card door-card" href="plastika/" id="plastika">
-        <div class="rc-ph"><img src="assets/photos/svc-plast.webp" alt="Пластическая хирургия лица" loading="lazy" decoding="async" width="900" height="562"></div>
-        <h3><span data-i18n="d.9t">Пластическая хирургия</span><span class="price" data-i18n="d.9p">от&nbsp;150&nbsp;000&nbsp;₸</span></h3>
-        <p data-i18n="d.9x">Блефаропластика, отопластика, булхорн, нитевой лифтинг. Хирург - Акшолаков М. К., 15&nbsp;лет стажа.</p>
-        <span class="arrow"><span data-i18n="d.go">Страница направления</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-      <a class="room-card door-card" href="pohudenie/" id="pohudenie">
-        <div class="rc-ph"><img src="assets/photos/svc-pohud.webp" alt="Сбалансированное питание" loading="lazy" decoding="async" width="900" height="562"></div>
-        <h3><span data-i18n="d.10t">Программа снижения веса</span><span class="price" data-i18n="d.10p">от&nbsp;55&nbsp;000&nbsp;₸</span></h3>
-        <p data-i18n="d.10x">Три этапа: диагностика, углублённая диагностика, лечение 3&nbsp;месяца под наблюдением эндокринолога, гастроэнтеролога и психолога.</p>
-        <span class="arrow"><span data-i18n="d.go">Страница направления</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-      </a>
-      <article class="room-card" id="vyezd"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/svc-vyezd.webp" alt="Врач измеряет давление пациентке на дому" loading="lazy" decoding="async" width="1024" height="640"></div>
-        <h3><span data-i18n="d.11t">Выезд на дом</span><span class="price" data-i18n="d.11p">от&nbsp;20&nbsp;000&nbsp;₸</span></h3>
-        <p data-i18n="d.11x">Вызов врача: район КШТ 20&nbsp;000&nbsp;₸, город 25&nbsp;000&nbsp;₸. ЭКГ на дому 10&nbsp;000&nbsp;₸, Холтер и СМАД 26&nbsp;000&nbsp;₸, УЗИ 9&nbsp;000-30&nbsp;000&nbsp;₸. Заявки 08:00-18:00, в пределах города.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: выезд на дом. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-      <article class="room-card" id="stacionar"><i class="door"></i>
-        <div class="rc-ph"><img src="assets/photos/svc-stac.webp" alt="Палата стационара" loading="lazy" decoding="async" width="900" height="562"></div>
-        <h3><span data-i18n="d.12t">Дневной стационар</span></h3>
-        <p data-i18n="d.12x">Капельницы и лечение по назначению врача, 5&nbsp;000-25&nbsp;000&nbsp;₸. Медицинские справки - 15&nbsp;000&nbsp;₸.</p>
-        <a class="btn sm wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться: дневной стационар. Подскажите свободное время."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="d.btn">Записаться</span></a>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- ОБОРУДОВАНИЕ: проезд по коридору -->
 <section class="sec stone ride" id="oborudovanie">
   <div class="wrap ride-head rv">
@@ -744,6 +748,6 @@
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/SplitText.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="script.js?v=20261106-27"></script>
+<script src="script.js?v=20261106-34"></script>
 </body>
 </html>

@@ -386,27 +386,21 @@
     gsap.from('.city .doc-frame, .city .doc-cap', { y: 40, opacity: 0, duration: 1.2, stagger: .15, delay: .3 });
   }
 
-  /* ---------- герой «один визит»: шаги маршрута загораются по очереди ---------- */
-  var visit = $('#visit');
-  if (visit) {
-    var vsteps = $$('.vs', visit), vline = $('.vs-line', visit), vi = -1, vtimer = null, vvis = true;
-    function vset(n) {
-      vsteps.forEach(function (li, i) { li.classList.toggle('on', i <= n); li.classList.toggle('cur', i === n); });
-      vline.style.setProperty('--p', Math.max(0, n) / (vsteps.length - 1));
-    }
-    if (reduced) { vset(vsteps.length - 1); vsteps[vsteps.length - 1].classList.remove('cur'); }
-    else {
-      var vtick = function () {
-        if (!vvis) { vtimer = setTimeout(vtick, 600); return; }
-        vi++;
-        if (vi >= vsteps.length) { vi = -1; vset(-1); vtimer = setTimeout(vtick, 900); return; }
-        vset(vi);
-        vtimer = setTimeout(vtick, vi === vsteps.length - 1 ? 3600 : 1300);
-      };
-      new IntersectionObserver(function (es) { vvis = es[0].isIntersecting; }, { threshold: .2 }).observe(visit);
-      vset(-1); vtimer = setTimeout(vtick, 900);
-    }
+  /* ---------- герой чек-апа: подсветка бежит по программам ---------- */
+  var stack = $('#hcStack');
+  if (stack && !reduced) {
+    var srows = $$('li', stack), si = 0, svis = true, shover = false;
+    new IntersectionObserver(function (es) { svis = es[0].isIntersecting; }).observe(stack);
+    stack.addEventListener('mouseenter', function () { shover = true; srows.forEach(function (r) { r.classList.remove('on'); }); });
+    stack.addEventListener('mouseleave', function () { shover = false; });
+    setInterval(function () {
+      if (!svis || shover) return;
+      srows.forEach(function (r, i) { r.classList.toggle('on', i === si); });
+      si = (si + 1) % srows.length;
+    }, 1700);
   }
+  var ecg = $('.hc-ecg');
+  if (ecg) new IntersectionObserver(function (es) { ecg.classList.toggle('paused', !es[0].isIntersecting); }).observe(ecg);
 
   /* ---------- языки: RU в разметке, казахский словарь грузится только по выбору KZ или ?lang=kk ---------- */
   var KK = null, LKEY = 'statusmed-lang';
