@@ -407,6 +407,14 @@
   var ecg = $('.hc-ecg');
   if (ecg) new IntersectionObserver(function (es) { ecg.classList.toggle('paused', !es[0].isIntersecting); }).observe(ecg);
 
+  /* ---------- до/после: шторка ---------- */
+  $$('[data-ba]').forEach(function (f) {
+    var box = $('.ba-box', f), r = $('.ba-range', f);
+    if (!box || !r) return;
+    var set = function () { box.style.setProperty('--p', r.value + '%'); };
+    r.addEventListener('input', set); set();
+  });
+
   /* ---------- языки: RU в разметке, казахский словарь грузится только по выбору KZ или ?lang=kk ---------- */
   var KK = null, LKEY = 'statusmed-lang';
   var i18nEls = $$('[data-i18n]');

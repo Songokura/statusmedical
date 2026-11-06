@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=20261106-46">
+<link rel="stylesheet" href="../styles.css?v=20261106-48">
 <script type="application/ld+json">
 [
  {
@@ -159,7 +159,6 @@
     <div class="portrait">
       <div class="back"></div>
       <div class="frame"><img src="../assets/photos/foto-43.webp" alt="Акшолаков Мухит Кадирбекович, пластический хирург" width="1024" height="1536" fetchpriority="high"></div>
-      <svg class="line" viewBox="0 0 400 540" preserveAspectRatio="none" aria-hidden="true"><path d="M20 540 L20 200 A180 180 0 0 1 380 200 L380 540"/></svg>
       <span class="tag t1" data-i18n="h.t1">15&nbsp;лет стажа</span>
       <span class="tag t2" data-i18n="h.t2">Пластический хирург</span>
       <span class="tag t3" data-i18n="h.t3">Офтальмолог</span>
@@ -219,7 +218,34 @@
 </section>
 
 <!-- ХИРУРГ -->
-<section class="sec dark on-dark" id="hirurg">
+<!-- РАБОТЫ ХИРУРГА: до и после из Instagram @dr.aksholakov -->
+<section class="sec white" id="raboty">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker" data-i18n="ba.k">Работы хирурга</span>
+      <h2 data-i18n="ba.h2">До и после <em>операции</em></h2>
+      <p class="lead" data-i18n="ba.lead">Работы Акшолакова М. К. из его Instagram. Потяните шторку, чтобы сравнить.</p>
+    </div>
+    <div class="ba-grid">
+      <figure class="ba rv" data-ba>
+        <div class="ba-box">
+          <img class="ba-after" src="../assets/photos/ba-oto-posle.webp" alt="После отопластики" width="1319" height="532" loading="lazy" decoding="async">
+          <div class="ba-before"><img src="../assets/photos/ba-oto-do.webp" alt="До отопластики" width="1319" height="532" loading="lazy" decoding="async"></div>
+          <span class="ba-lbl l" data-i18n="ba.do">До</span><span class="ba-lbl r" data-i18n="ba.po">После</span>
+          <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Сравнить до и после">
+          <span class="ba-handle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        </div>
+        <figcaption><b data-i18n="op.2t">Отопластика</b><a class="link" href="https://www.instagram.com/dr.aksholakov" target="_blank" rel="noopener"><span>@dr.aksholakov</span></a></figcaption>
+      </figure>
+      <div class="ba-more rv d1">
+        <p data-i18n="ba.more">Больше работ хирурга - блефаропластика, булхорн, лифтинг - в Instagram.</p>
+        <a class="btn ghost" href="https://www.instagram.com/dr.aksholakov" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#ic-ig"/></svg><span data-i18n="ba.btn">Работы хирурга в Instagram</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec stone hirurg-sec" id="hirurg">
   <div class="wrap hirurg">
     <div class="rv">
       <span class="kicker" data-i18n="s.k">Хирург</span>
@@ -315,7 +341,7 @@
 </section>
 
 <!-- ЗАПИСЬ -->
-<section class="sec dark on-dark" id="zayavka">
+<section class="sec white" id="zayavka">
   <div class="wrap contact">
     <div class="rv">
       <span class="kicker" data-i18n="z.k">Запись</span>
@@ -366,6 +392,6 @@
 <script src="../assets/vendor/ScrollTrigger.min.js"></script>
 <script src="../assets/vendor/SplitText.min.js"></script>
 <script src="../assets/vendor/lenis.min.js"></script>
-<script src="../script.js?v=20261106-46"></script>
+<script src="../script.js?v=20261106-48"></script>
 </body>
 </html>
