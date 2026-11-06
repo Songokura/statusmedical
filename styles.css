@@ -815,3 +815,5 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media (prefers-reduced-motion:reduce){.hc-slides .sl img{transition:none;transform:none}}
 @media (max-width:860px){.hc-slides figcaption{bottom:auto;top:12px;right:12px;font-size:13px}}
 @media (max-width:860px){.hc-slides .sl img{object-position:50% 60%}}
+
+.hirurg-ph img{object-position:50% 70%}
