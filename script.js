@@ -174,13 +174,7 @@
     window.addEventListener('load', setViewBox);
     setViewBox();
     mq.addEventListener ? mq.addEventListener('change', setViewBox) : mq.addListener(setViewBox);
-
-    /* параллакс планов */
     if (hasGsap && !reduced) {
-      layers.forEach(function (l) {
-        var depth = parseFloat(l.getAttribute('data-depth') || '0');
-        gsap.to(l, { yPercent: depth * 60, ease: 'none', scrollTrigger: { trigger: '.hero-main', start: 'top top', end: 'bottom top', scrub: true } });
-      });
       gsap.fromTo(scene, { opacity: 0, y: 40, scale: .96 }, { opacity: 1, y: 0, scale: 1, duration: 1.4, ease: 'power3.out', delay: .2 });
     }
     /* пауза вне экрана */
@@ -230,18 +224,6 @@
   var pio = new IntersectionObserver(function (es) { es.forEach(function (en) { en.target.classList.toggle('paused', !en.isIntersecting); }); }, { threshold: 0 });
   $$('.ward, .city, .corridor, .face, .ride, .hirurg .emblem, .facts').forEach(function (el) { pio.observe(el); });
 
-  /* ---------- бегущая строка фактов ---------- */
-  var track = $('#factsTrack');
-  if (track) {
-    var list = $('.facts-list', track);
-    track.appendChild(list.cloneNode(true));
-    track.appendChild(list.cloneNode(true));
-    if (hasGsap && !reduced) {
-      var w = list.getBoundingClientRect().width;
-      var marq = gsap.to(track, { x: -w, duration: w / 60, ease: 'none', repeat: -1 });
-      new IntersectionObserver(function (es) { es.forEach(function (en) { en.isIntersecting ? marq.play() : marq.pause(); }); }).observe(track);
-    }
-  }
 
   /* ---------- карточки-комнаты: стена отъезжает ---------- */
   if (hasGsap && !reduced) {
@@ -255,21 +237,23 @@
   if (ride) {
     var rideSec = ride.closest('.ride');
     var nav = $$('.ride-nav button', rideSec);
-    var desktop = window.matchMedia('(min-width: 1024px)').matches;
-    if (desktop && hasGsap && !reduced) {
-      var amount = function () { return ride.scrollWidth - ride.parentElement.clientWidth; };
-      var tween = gsap.to(ride, { x: function () { return -amount(); }, ease: 'none', scrollTrigger: { trigger: rideSec, start: 'top top+=' + 76, end: function () { return '+=' + amount(); }, pin: true, scrub: 0.8, invalidateOnRefresh: true, anticipatePin: 1 } });
-      nav.forEach(function (b) { b.addEventListener('click', function () {
-        var st = tween.scrollTrigger; var step = $('.ride-card', ride).offsetWidth + 20;
-        var target = window.scrollY + parseInt(b.getAttribute('data-dir'), 10) * step;
-        target = Math.max(st.start, Math.min(st.end, target));
-        if (lenis) lenis.scrollTo(target, { duration: .8 }); else window.scrollTo({ top: target, behavior: 'smooth' });
-      }); });
-    } else {
+    {
       var upd = function () { nav[0].disabled = ride.scrollLeft <= 2; nav[1].disabled = ride.scrollLeft + ride.clientWidth >= ride.scrollWidth - 2; };
-      nav.forEach(function (b) { b.addEventListener('click', function () { ride.scrollBy({ left: parseInt(b.getAttribute('data-dir'), 10) * ($('.ride-card', ride).offsetWidth + 20), behavior: 'smooth' }); }); });
-      ride.addEventListener('scroll', upd); upd();
+      nav.forEach(function (b) { b.addEventListener('click', function () { ride.scrollBy({ left: parseInt(b.getAttribute('data-dir'), 10) * ($('.ride-card', ride).getBoundingClientRect().width + (parseFloat(getComputedStyle(ride).columnGap) || 20)), behavior: reduced ? 'auto' : 'smooth' }); }); });
+      ride.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
     }
+  }
+
+  /* ---------- врачи: первые 8 карточек, остальные по кнопке ---------- */
+  var docsBox = $('#docs'), docsMore = null;
+  function docsOpen() { if (!docsBox) return; docsBox.classList.remove('clip'); if (docsMore) docsMore.hidden = true; if (hasGsap) ScrollTrigger.refresh(); }
+  if (docsBox && $$('.doc', docsBox).length > 8) {
+    docsBox.classList.add('clip');
+    docsMore = document.createElement('p');
+    docsMore.className = 'docs-more';
+    docsMore.innerHTML = '<button type="button" class="btn ghost"><span data-i18n="v.more">Все врачи центра</span> <span class="num">(' + $$('.doc', docsBox).length + ')</span></button>';
+    docsBox.insertAdjacentElement('afterend', docsMore);
+    $('button', docsMore).addEventListener('click', docsOpen);
   }
 
   /* ---------- врачи: фильтр ---------- */
@@ -279,28 +263,41 @@
       filters.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
       var f = b.getAttribute('data-f');
       $$('#docs .doc').forEach(function (d) { d.classList.toggle('hidden', f !== 'all' && (d.getAttribute('data-cat') || '').split(' ').indexOf(f) < 0); });
+      if (f !== 'all') docsOpen();
       if (hasGsap) { gsap.from('#docs .doc:not(.hidden)', { y: 16, opacity: 0, duration: .5, stagger: .03, clearProps: 'all' }); ScrollTrigger.refresh(); }
     }); });
     if (hasGsap && !reduced) gsap.from('#docs .doc', { y: 30, opacity: 0, duration: .8, stagger: .04, scrollTrigger: { trigger: '#docs', start: 'top 80%' }, clearProps: 'transform,opacity' });
   }
 
-  /* ---------- пластика: контур лица и группы операций ---------- */
+  /* ---------- пластика: фото зон и группы операций ---------- */
   var face = $('#face');
   if (face) {
-    var zones = $$('.zone', face), groups = $$('.op-group[data-zone]');
+    var zones = $$('.zone', face), figs = $$('.zone-ph', face), groups = $$('.op-group[data-zone]');
+    var cur = '';
     function on(z) {
-      zones.forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-zone') === z); });
+      if (z === cur) return; cur = z;
+      zones.forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-zone') === z ? 'true' : 'false'); });
+      figs.forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-zone') === z); });
       groups.forEach(function (g) { g.classList.toggle('on', g.getAttribute('data-zone') === z); });
     }
     zones.forEach(function (z) {
-      z.addEventListener('mouseenter', function () { on(z.getAttribute('data-zone')); });
-      z.addEventListener('click', function () { on(z.getAttribute('data-zone')); scrollTo($('.op-group[data-zone="' + z.getAttribute('data-zone') + '"]'), 110); });
+      z.addEventListener('click', function () { on(z.getAttribute('data-zone')); scrollTo($('.op-group[data-zone="' + z.getAttribute('data-zone') + '"]'), hdrH() + 24); });
     });
-    groups.forEach(function (g) { g.addEventListener('mouseenter', function () { on(g.getAttribute('data-zone')); }); });
-    on('eyes');
-    if (hasGsap && !reduced) {
-      $$('path.draw', face).forEach(function (p) { var l = p.getTotalLength(); gsap.fromTo(p, { strokeDasharray: l, strokeDashoffset: l }, { strokeDashoffset: 0, duration: 2.2, ease: 'power2.inOut', scrollTrigger: { trigger: face, start: 'top 75%' } }); });
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      groups.forEach(function (g) { g.addEventListener('mouseenter', function () { on(g.getAttribute('data-zone')); }); });
     }
+    /* зона на фото - у группы, ближайшей к середине экрана */
+    var ops = face.closest('.ops'), zt = false;
+    function nearest() {
+      zt = false;
+      var r = ops.getBoundingClientRect(), mid = window.innerHeight / 2;
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      var best = null, bd = 1e9;
+      groups.forEach(function (g) { var b = g.getBoundingClientRect(), d = Math.abs((b.top + b.bottom) / 2 - mid); if (d < bd) { bd = d; best = g; } });
+      if (best) on(best.getAttribute('data-zone'));
+    }
+    window.addEventListener('scroll', function () { if (!zt) { zt = true; requestAnimationFrame(nearest); } }, { passive: true });
+    on('eyes');
   }
   var pLine = $('.portrait .line path');
   if (pLine && hasGsap && !reduced) { var pl = pLine.getTotalLength(); gsap.fromTo(pLine, { strokeDasharray: pl, strokeDashoffset: pl }, { strokeDashoffset: 0, duration: 2.4, ease: 'power2.inOut', delay: .4 }); gsap.from('.portrait .tag', { scale: .8, opacity: 0, duration: .7, stagger: .15, delay: 1.2, ease: 'back.out(1.6)' }); gsap.from('.portrait .frame, .portrait .back', { y: 40, opacity: 0, duration: 1.2, delay: .15, ease: 'power3.out' }); }
@@ -316,8 +313,39 @@
   var doors = $$('.corridor .door');
   if (doors.length) {
     var cards = $$('.door-card'), tabs = $$('.door-tabs button');
+    /* створка открывается внутрь кабинета: дальний край сужается к косяку, всё внутри проёма */
+    function leafPts(x, t) {
+      var w = 170 - 118 * t, dy = 16 * t;
+      return [x, 120, x + w, 120 + dy, x + w, 400 - dy, x, 400].map(function (v) { return Math.round(v * 10) / 10; });
+    }
+    function ptsStr(a) { return a[0] + ',' + a[1] + ' ' + a[2] + ',' + a[3] + ' ' + a[4] + ',' + a[5] + ' ' + a[6] + ',' + a[7]; }
+    function setLeaf(d, open) {
+      var g = $('.leaf-g', d); if (!g) return;
+      var x = parseFloat(g.getAttribute('data-x')), leaf = $('.leaf', g), knob = $('.knob', g);
+      var from = { t: g.__t || 0 }, to = open ? 1 : 0;
+      if (from.t === to) return;
+      var draw = function () {
+        leaf.setAttribute('points', ptsStr(leafPts(x, from.t)));
+        knob.setAttribute('cx', (x + (170 - 118 * from.t) - 18 * (1 - from.t * .6)).toFixed(1));
+        g.__t = from.t;
+      };
+      if (hasGsap && !reduced) gsap.to(from, { t: to, duration: .9, ease: 'power3.inOut', onUpdate: draw });
+      else { from.t = to; draw(); }
+    }
+    /* таблички по длине подписи (казахские длиннее) */
+    function sizePlates() {
+      doors.forEach(function (d) {
+        var t = $('text', d), r = $('rect.plate', d);
+        if (!t || !r || !t.getComputedTextLength) return;
+        var w = Math.round(t.getComputedTextLength() + 32), cx = parseFloat(t.getAttribute('x'));
+        r.setAttribute('width', w); r.setAttribute('x', Math.round(cx - w / 2));
+      });
+    }
+    window.__sizePlates = sizePlates;
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizePlates);
+    sizePlates();
     function openDoor(k) {
-      doors.forEach(function (d) { d.classList.toggle('open', d.getAttribute('data-door') === k); });
+      doors.forEach(function (d) { var o = d.getAttribute('data-door') === k; d.classList.toggle('open', o); setLeaf(d, o); });
       cards.forEach(function (c) { c.classList.toggle('on', c.getAttribute('data-door') === k); });
       tabs.forEach(function (t) { t.setAttribute('aria-pressed', t.getAttribute('data-door') === k ? 'true' : 'false'); });
     }
@@ -356,6 +384,7 @@
     $$('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false'); });
     try { localStorage.setItem(LKEY, lang); } catch (e) {}
     if (window.__sizeTags) window.__sizeTags();
+    if (window.__sizePlates) window.__sizePlates();
     if (hasGsap) ScrollTrigger.refresh();
   }
   function setLang(lang) { if (lang === 'kk') loadKK(function () { applyLang('kk'); }); else applyLang('ru'); }
