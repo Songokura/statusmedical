@@ -120,7 +120,7 @@
   if (hasGsap && typeof SplitText !== 'undefined' && !reduced) {
     document.fonts.ready.then(function () {
       $$('h1.split').forEach(function (h) {
-        var split = new SplitText(h, { type: 'lines', linesClass: 'line' });
+        var split = new SplitText(h, { type: 'lines', linesClass: 'line', reduceWhiteSpace: false });
         gsap.from(split.lines, { yPercent: 110, opacity: 0, duration: 1.1, stagger: 0.08, ease: 'power3.out', delay: 0.1 });
       });
       gsap.from('.hero-text .kicker, .hero-text .lead, .hero-btns, .hero-ig', { y: 18, opacity: 0, duration: 0.9, stagger: 0.08, delay: 0.35 });
@@ -272,7 +272,7 @@
   /* ---------- пластика: фото зон и группы операций ---------- */
   var face = $('#face');
   if (face) {
-    var zones = $$('.zone', face), figs = $$('.zone-ph', face), groups = $$('.op-group[data-zone]');
+    var zones = $$('.zone', face), figs = $$('.zone-ph, .zp', face), groups = $$('.op-group[data-zone]');
     var cur = '';
     function on(z) {
       if (z === cur) return; cur = z;
@@ -280,6 +280,19 @@
       figs.forEach(function (x) { x.classList.toggle('on', x.getAttribute('data-zone') === z); });
       groups.forEach(function (g) { g.classList.toggle('on', g.getAttribute('data-zone') === z); });
     }
+    /* подписи-пилюли на фото по длине текста */
+    function sizePills() {
+      $$('.zp', face).forEach(function (g) {
+        var t = $('text', g), r = $('rect.pill', g); if (!t || !r || !t.getComputedTextLength) return;
+        var w = Math.round(t.getComputedTextLength() + 32);
+        r.setAttribute('width', w);
+        if (r.getAttribute('data-anchor') === 'middle') r.setAttribute('x', Math.round(parseFloat(t.getAttribute('x')) - w / 2));
+      });
+    }
+    window.__sizePills = sizePills;
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizePills);
+    sizePills();
+    $$('.zp', face).forEach(function (g) { g.addEventListener('click', function () { on(g.getAttribute('data-zone')); scrollTo($('.op-group[data-zone="' + g.getAttribute('data-zone') + '"]'), hdrH() + 24); }); });
     zones.forEach(function (z) {
       z.addEventListener('click', function () { on(z.getAttribute('data-zone')); scrollTo($('.op-group[data-zone="' + z.getAttribute('data-zone') + '"]'), hdrH() + 24); });
     });
@@ -353,6 +366,18 @@
     tabs.forEach(function (t) { t.addEventListener('click', function () { openDoor(t.getAttribute('data-door')); }); });
     openDoor('endo');
   }
+  /* лента этапов: подписи по длине текста, сбоку от узла с зазором */
+  function sizeLbls() {
+    $$('.city .lbl').forEach(function (g) {
+      var t = $('text', g), r = $('rect', g); if (!t || !r || !t.getComputedTextLength) return;
+      var w = Math.round(t.getComputedTextLength() + 28), nx = parseFloat(g.getAttribute('data-nx')), gap = 22;
+      var x = g.getAttribute('data-side') === 'r' ? nx + gap : nx - gap - w;
+      r.setAttribute('width', w); r.setAttribute('x', x); t.setAttribute('x', x + 14);
+    });
+  }
+  window.__sizeLbls = sizeLbls;
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeLbls);
+  sizeLbls();
   var city = $('.city');
   if (city && hasGsap && !reduced) {
     $$('.layer', city).forEach(function (l) { gsap.to(l, { yPercent: parseFloat(l.getAttribute('data-depth') || 0) * 50, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } }); });
@@ -385,6 +410,8 @@
     try { localStorage.setItem(LKEY, lang); } catch (e) {}
     if (window.__sizeTags) window.__sizeTags();
     if (window.__sizePlates) window.__sizePlates();
+    if (window.__sizePills) window.__sizePills();
+    if (window.__sizeLbls) window.__sizeLbls();
     if (hasGsap) ScrollTrigger.refresh();
   }
   function setLang(lang) { if (lang === 'kk') loadKK(function () { applyLang('kk'); }); else applyLang('ru'); }
