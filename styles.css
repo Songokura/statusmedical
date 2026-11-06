@@ -780,3 +780,23 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media (min-width:861px) and (max-height:820px){.hc-stack{display:none}}
 @media (min-width:861px){.hero-chk .hero-text{max-width:min(840px,calc(54vw - var(--pad)))}}
 @media (max-width:860px) and (max-height:700px){.hc-grid{margin-top:-6px}}
+/* герой про клинику: размеры от высоты окна, чтобы первый экран целиком влезал */
+.hero-chk{padding:clamp(24px,5vh,72px) 0}
+.hero-chk h1{font-size:clamp(38px,min(5.6vw,10vh),96px);margin-top:clamp(10px,1.6vh,18px)}
+.hc-price{margin-top:clamp(10px,1.8vh,18px);font-size:clamp(16px,min(1.35vw,2.3vh),20px);line-height:1.5;max-width:640px}
+.hc-list{margin-top:clamp(12px,2.2vh,22px);gap:clamp(6px,1.1vh,10px)}
+.hero-chk .hero-btns{margin-top:clamp(16px,3vh,28px)}
+.hero-chk .hero-ig{margin-top:clamp(10px,1.8vh,18px)}
+@media (min-width:861px) and (max-height:700px){.hc-list{display:none}}
+@media (max-width:860px){
+  .hc-photo{height:clamp(190px,30svh,300px)}
+  .hc-photo img{object-position:50% 18%}
+  .hero-chk h1{font-size:clamp(32px,9.6vw,44px)}
+  .hc-price{font-size:15px}
+  .hc-list li{font-size:14px}
+}
+@media (max-width:480px){.hc-list{display:none}}
+.hero-chk h1 .line{padding-top:.14em;margin-top:-.14em}
+@media (max-width:860px){.hero-chk{padding:0 0 calc(84px + env(safe-area-inset-bottom))}}
+@media (max-width:860px){.hc-photo{height:clamp(190px,46svh,400px)}.hc-ecg{display:none}}
+@media (max-width:860px) and (max-height:700px){.hc-photo{height:170px}}
