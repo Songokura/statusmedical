@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261106-38">
+<link rel="stylesheet" href="styles.css?v=20261106-41">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -129,10 +129,15 @@
 
 <!-- ГЕРОЙ: чек-ап за один день - главный оффер -->
 <section class="hero hero-chk on-dark">
-  <picture class="hc-photo">
-    <source media="(max-width:860px)" srcset="assets/photos/hero-doc-m.webp">
-    <img src="assets/photos/hero-doc.webp" alt="Врач Status Medical Center у стойки регистрации с логотипом центра" width="1000" height="1250" fetchpriority="high" decoding="async">
-  </picture>
+  <div class="hc-photo hc-slides" id="hcSlides">
+    <figure class="sl on"><img src="assets/photos/sl-fasad.webp" alt="Здание Status Medical Center на улице Кокжал Барака, 19" width="720" height="900" decoding="async" fetchpriority="high"><figcaption data-i18n="hs.s0">Здание центра, Кокжал Барака, 19</figcaption></figure>
+    <figure class="sl"><img src="assets/photos/sl-wall.webp" alt="Фирменная стена с логотипом Status Medical Center у ресепшн" width="768" height="960" decoding="async" loading="lazy"><figcaption data-i18n="hs.s1">Ресепшн центра</figcaption></figure>
+    <figure class="sl"><img src="assets/photos/sl-lor.webp" alt="ЛОР-кабинет с оборудованием" width="900" height="1125" decoding="async" loading="lazy"><figcaption data-i18n="hs.s2">ЛОР-кабинет</figcaption></figure>
+    <figure class="sl"><img src="assets/photos/sl-uzi.webp" alt="Кабинет УЗИ с аппаратом экспертного класса" width="960" height="1125" decoding="async" loading="lazy"><figcaption data-i18n="hs.s3">Кабинет УЗИ</figcaption></figure>
+    <figure class="sl"><img src="assets/photos/sl-neuron.webp" alt="Комплекс Нейрон-Спектр в кабинете функциональной диагностики" width="649" height="811" decoding="async" loading="lazy"><figcaption data-i18n="hs.s4">Функциональная диагностика</figcaption></figure>
+    <figure class="sl"><img src="assets/photos/sl-endo.webp" alt="Видеоэндоскопическая стойка" width="677" height="846" decoding="async" loading="lazy"><figcaption data-i18n="hs.s5">Эндоскопия</figcaption></figure>
+    <div class="sl-bar" aria-hidden="true"><i></i></div>
+  </div>
   <div class="hc-shade"></div>
   <svg class="hc-ecg" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path class="bg" d="M0 70 H330 l18 -8 l14 8 h40 l12 -48 l16 92 l14 -60 l10 16 h60 l22 -10 l20 10 H760 l18 -8 l14 8 h40 l12 -48 l16 92 l14 -60 l10 16 h60 l22 -10 l20 10 H1200"/><path class="fg" d="M0 70 H330 l18 -8 l14 8 h40 l12 -48 l16 92 l14 -60 l10 16 h60 l22 -10 l20 10 H760 l18 -8 l14 8 h40 l12 -48 l16 92 l14 -60 l10 16 h60 l22 -10 l20 10 H1200"/></svg>
   <div class="wrap hc-grid">
@@ -156,9 +161,8 @@
   <div class="hc-side">
     <div class="hc-stack" id="hcStack">
       <span class="hc-stack-k" data-i18n="h.stk2">В центре</span>
-      <ol><li><a href="#priem"><span data-i18n="d.1t">Приём специалистов</span><b class="num" data-i18n="d.1p">от&nbsp;8&nbsp;000&nbsp;₸</b></a></li><li><a href="#uzi"><span data-i18n="d.2t">УЗИ</span><b class="num" data-i18n="d.2p">от&nbsp;4&nbsp;000&nbsp;₸</b></a></li><li><a href="#diagnostika"><span data-i18n="d.3t">Функциональная диагностика</span><b class="num" data-i18n="d.3p">от&nbsp;3&nbsp;000&nbsp;₸</b></a></li><li><a href="#endoskopiya"><span data-i18n="d.4t">Эндоскопия</span><b class="num" data-i18n="d.4p">от&nbsp;21&nbsp;000&nbsp;₸</b></a></li><li><a href="#stacionar"><span data-i18n="d.12t">Дневной стационар</span><b class="num">5&nbsp;000-25&nbsp;000&nbsp;₸</b></a></li><li><a href="plastika/"><span data-i18n="d.9t">Пластическая хирургия</span><b class="num" data-i18n="d.9p">от&nbsp;150&nbsp;000&nbsp;₸</b></a></li><li><a href="pohudenie/"><span data-i18n="d.10t">Программа снижения веса</span><b class="num" data-i18n="d.10p">от&nbsp;55&nbsp;000&nbsp;₸</b></a></li></ol>
+      <ol><li data-sl="2"><a href="#priem"><span data-i18n="d.1t">Приём специалистов</span><b class="num" data-i18n="d.1p">от&nbsp;8&nbsp;000&nbsp;₸</b></a></li><li data-sl="3"><a href="#uzi"><span data-i18n="d.2t">УЗИ</span><b class="num" data-i18n="d.2p">от&nbsp;4&nbsp;000&nbsp;₸</b></a></li><li data-sl="4"><a href="#diagnostika"><span data-i18n="d.3t">Функциональная диагностика</span><b class="num" data-i18n="d.3p">от&nbsp;3&nbsp;000&nbsp;₸</b></a></li><li data-sl="5"><a href="#endoskopiya"><span data-i18n="d.4t">Эндоскопия</span><b class="num" data-i18n="d.4p">от&nbsp;21&nbsp;000&nbsp;₸</b></a></li><li><a href="#stacionar"><span data-i18n="d.12t">Дневной стационар</span><b class="num">5&nbsp;000-25&nbsp;000&nbsp;₸</b></a></li><li><a href="plastika/"><span data-i18n="d.9t">Пластическая хирургия</span><b class="num" data-i18n="d.9p">от&nbsp;150&nbsp;000&nbsp;₸</b></a></li><li><a href="pohudenie/"><span data-i18n="d.10t">Программа снижения веса</span><b class="num" data-i18n="d.10p">от&nbsp;55&nbsp;000&nbsp;₸</b></a></li></ol>
     </div>
-    <span class="hc-tag" data-i18n="h.tag">Кенесова Мөлдір Қайратқызы, эндокринолог</span>
   </div>
 </section>
 
@@ -748,6 +752,6 @@
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/SplitText.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="script.js?v=20261106-38"></script>
+<script src="script.js?v=20261106-41"></script>
 </body>
 </html>

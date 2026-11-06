@@ -386,18 +386,23 @@
     gsap.from('.city .doc-frame, .city .doc-cap', { y: 40, opacity: 0, duration: 1.2, stagger: .15, delay: .3 });
   }
 
-  /* ---------- герой чек-апа: подсветка бежит по программам ---------- */
-  var stack = $('#hcStack');
-  if (stack && !reduced) {
-    var srows = $$('li', stack), si = 0, svis = true, shover = false;
-    new IntersectionObserver(function (es) { svis = es[0].isIntersecting; }).observe(stack);
-    stack.addEventListener('mouseenter', function () { shover = true; srows.forEach(function (r) { r.classList.remove('on'); }); });
-    stack.addEventListener('mouseleave', function () { shover = false; });
-    setInterval(function () {
-      if (!svis || shover) return;
-      srows.forEach(function (r, i) { r.classList.toggle('on', i === si); });
-      si = (si + 1) % srows.length;
-    }, 1700);
+  /* ---------- герой: показ помещений, строка списка подсвечивается вместе с кадром ---------- */
+  var slw = $('#hcSlides');
+  if (slw) {
+    var sls = $$('.sl', slw), bar = $('.sl-bar i', slw), srow = $$('#hcStack li'), cur = 0, svis = true, DUR = 5200;
+    function show(n) {
+      sls.forEach(function (f, i) { f.classList.toggle('on', i === n); });
+      srow.forEach(function (r) { r.classList.toggle('on', r.getAttribute('data-sl') === String(n)); });
+      if (bar && !reduced) { bar.classList.remove('run'); void bar.offsetWidth; slw.style.setProperty('--sl-dur', DUR + 'ms'); bar.classList.add('run'); }
+      cur = n;
+    }
+    srow.forEach(function (r) {
+      if (!r.hasAttribute('data-sl')) return;
+      r.addEventListener('mouseenter', function () { show(parseInt(r.getAttribute('data-sl'), 10)); });
+    });
+    new IntersectionObserver(function (es) { svis = es[0].isIntersecting; }).observe(slw);
+    show(0);
+    if (!reduced) setInterval(function () { if (svis && !document.hidden) show((cur + 1) % sls.length); }, DUR);
   }
   var ecg = $('.hc-ecg');
   if (ecg) new IntersectionObserver(function (es) { ecg.classList.toggle('paused', !es[0].isIntersecting); }).observe(ecg);
