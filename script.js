@@ -123,7 +123,7 @@
         var split = new SplitText(h, { type: 'lines', linesClass: 'line', reduceWhiteSpace: false });
         gsap.from(split.lines, { yPercent: 110, opacity: 0, duration: 1.1, stagger: 0.08, ease: 'power3.out', delay: 0.1 });
       });
-      gsap.from('.hero-text .kicker, .hero-text .lead, .hero-btns, .hero-offer, .hero-ig', { y: 18, opacity: 0, duration: 0.9, stagger: 0.08, delay: 0.35 });
+      gsap.from('.hero-text .kicker, .hero-text .lead, .hero-btns, .hero-ig', { y: 18, opacity: 0, duration: 0.9, stagger: 0.08, delay: 0.35 });
     });
   }
 
@@ -222,7 +222,7 @@
 
   /* ---------- живые сцены на паузе вне экрана ---------- */
   var pio = new IntersectionObserver(function (es) { es.forEach(function (en) { en.target.classList.toggle('paused', !en.isIntersecting); }); }, { threshold: 0 });
-  $$('.ward, .city, .corridor, .ride, .facts, .wall-cols').forEach(function (el) { pio.observe(el); });
+  $$('.ward, .city, .corridor, .ride, .facts').forEach(function (el) { pio.observe(el); });
 
 
   /* ---------- карточки-комнаты: стена отъезжает ---------- */
@@ -384,6 +384,28 @@
     var rib = $('#ribbon');
     if (rib) { var rl = rib.getTotalLength(); gsap.fromTo(rib, { strokeDasharray: rl, strokeDashoffset: rl }, { strokeDashoffset: 0, duration: 2.6, ease: 'power2.inOut', delay: .5 }); gsap.from('.city .node, .city .lbl', { opacity: 0, scale: .5, transformOrigin: 'center', stagger: .25, duration: .6, delay: 1.3, ease: 'back.out(1.6)' }); }
     gsap.from('.city .doc-frame, .city .doc-cap', { y: 40, opacity: 0, duration: 1.2, stagger: .15, delay: .3 });
+  }
+
+  /* ---------- герой «один визит»: шаги маршрута загораются по очереди ---------- */
+  var visit = $('#visit');
+  if (visit) {
+    var vsteps = $$('.vs', visit), vline = $('.vs-line', visit), vi = -1, vtimer = null, vvis = true;
+    function vset(n) {
+      vsteps.forEach(function (li, i) { li.classList.toggle('on', i <= n); li.classList.toggle('cur', i === n); });
+      vline.style.setProperty('--p', Math.max(0, n) / (vsteps.length - 1));
+    }
+    if (reduced) { vset(vsteps.length - 1); vsteps[vsteps.length - 1].classList.remove('cur'); }
+    else {
+      var vtick = function () {
+        if (!vvis) { vtimer = setTimeout(vtick, 600); return; }
+        vi++;
+        if (vi >= vsteps.length) { vi = -1; vset(-1); vtimer = setTimeout(vtick, 900); return; }
+        vset(vi);
+        vtimer = setTimeout(vtick, vi === vsteps.length - 1 ? 3600 : 1300);
+      };
+      new IntersectionObserver(function (es) { vvis = es[0].isIntersecting; }, { threshold: .2 }).observe(visit);
+      vset(-1); vtimer = setTimeout(vtick, 900);
+    }
   }
 
   /* ---------- языки: RU в разметке, казахский словарь грузится только по выбору KZ или ?lang=kk ---------- */
