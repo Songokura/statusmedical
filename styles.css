@@ -884,3 +884,5 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 @media (max-width:860px){.zs-col .zp text{font-size:28px}}
 
 .hc-ecg{bottom:1.5%;height:80px}
+.on-dark .nick,.sec.dark .nick{color:rgba(255,255,255,.78)}
+.ftr .lic{color:rgba(255,255,255,.75)}
