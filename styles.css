@@ -155,7 +155,6 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .hero>.wrap{position:relative;z-index:1}
 .hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,56px);align-items:center}
 .hero-text h1{margin-top:18px;font-size:clamp(30px,3.3vw,50px)}
-.hero-main .hero-grid{grid-template-columns:minmax(0,11fr) minmax(0,13fr)}
 .hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .hero-ig{margin-top:18px;display:inline-flex}
 .hero-light{position:absolute;inset:0;pointer-events:none;background:
@@ -208,11 +207,8 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .scene-nav button[hidden]{display:none}
 .paused,.paused *{animation-play-state:paused!important}
 @media (max-width:860px){
-  /* мобильный герой главной: текст + сцена в 100svh, сцена заполняет остаток экрана */
-  .hero-main{min-height:calc(100svh - var(--hdr));padding:18px 0 calc(84px + env(safe-area-inset-bottom));align-items:stretch}
-  .hero-main .hero-grid{display:flex;flex-direction:column;gap:16px}
-  .hero-main .scene-wrap{flex:1;display:flex;flex-direction:column;min-height:0}
-  .scene{flex:1;aspect-ratio:auto;min-height:190px;max-height:360px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:14px}
+  /* схема здания на телефоне: два уровня разреза крупно, листается стрелками */
+  .scene{aspect-ratio:auto;height:clamp(220px,34svh,320px);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-radius:14px}
   .scene::-webkit-scrollbar{display:none}
   .scene .layer{position:relative;height:100%;inset:auto;width:auto}
   .scene .layer:not(.layer-main){display:none}
@@ -221,23 +217,11 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .scene-nav button{width:44px;height:44px;background:rgba(255,255,255,.92);box-shadow:0 6px 16px -8px rgba(47,31,23,.5)}
   .scene-wrap{position:relative}
   .scene-cap{margin-top:8px;font-size:13px}
-  .hero-main .hero-stats{margin-top:8px}
-  /* сцена здания - первым кадром на телефоне, текст под ней */
-  .hero-main{padding-top:12px}
-  .hero-main .scene-wrap{order:-1;flex:none;align-self:stretch;width:100%}
-  .hero-main .scene{flex:none;height:clamp(200px,32svh,300px);min-height:0}
-  .hero-main .scene-cap{display:none}
-  .hero-main .kicker{letter-spacing:.08em}
-}
-@media (max-width:860px) and (max-height:700px){
-  .hero-main .scene{height:168px}
-  .hero-main .hero-grid{gap:12px}
 }
 @media (max-width:480px){
   .btn{white-space:normal;text-align:center;line-height:1.2}
   .hero .lead-tail{display:none}
   .hero-plast .hero-text h1,.hero-slim .hero-text h1{font-size:clamp(25px,7.2vw,30px)}
-  .hero-main .hero-text h1{font-size:clamp(25px,7.2vw,30px)}
 }
 .nw{white-space:nowrap}
 /* липкая панель - после 55% первого экрана, прячется на контактах */
@@ -571,7 +555,7 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   .logo img{width:40px;height:40px}
   .hero{min-height:0;padding:28px 0 36px}
   .hero-grid{grid-template-columns:minmax(0,1fr);gap:28px}
-  .hero-main .hero-grid,.hero-plast .hero-grid,.hero-slim .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .hero-plast .hero-grid,.hero-slim .hero-grid{grid-template-columns:minmax(0,1fr)}
   .scene-wrap,.hero-text{min-width:0}
   .portrait{margin:0 auto;width:min(100%,360px)}
   .portrait .tag.t1{left:0}.portrait .tag.t2{right:0}.portrait .tag.t3{left:0}
@@ -705,3 +689,71 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .scene .layer-front,.scene .layer-sky{pointer-events:none}
 .city .doc-frame{width:36%}
 .ph-empty .ph-logo{width:64px!important;height:64px!important;object-fit:contain;flex:none}
+
+/* ===== герой главной: живая стена врачей ===== */
+.hero-wall{background:var(--walnut-3);color:#fff;min-height:calc(100svh - var(--hdr));isolation:isolate}
+.hero-wall .hero-grid{grid-template-columns:minmax(0,1fr)}
+.hero-wall .hero-text{max-width:min(620px,48%);position:relative;z-index:2}
+.hero-wall h1{color:#fff;font-size:clamp(38px,4.6vw,72px);line-height:1.02;letter-spacing:-.02em}
+.hero-wall h1 em{color:var(--gold-2)}
+.hero-wall .lead{color:rgba(255,255,255,.78);margin-top:18px}
+.hero-wall .kicker{color:var(--gold-2)}
+.hero-wall .btn.ghost{color:#fff;border-color:rgba(255,255,255,.4)}
+@media (hover:hover) and (pointer:fine){.hero-wall .btn.ghost:hover{background:rgba(255,255,255,.08)}}
+.hero-wall .hero-ig{color:rgba(255,255,255,.85);border-color:rgba(255,255,255,.3)}
+.hero-offer{margin-top:22px;display:inline-flex;align-items:center;gap:12px;padding:12px 18px;min-height:48px;border-radius:999px;background:rgba(226,205,106,.12);border:1px solid rgba(226,205,106,.45);color:#fff;font-weight:500;font-size:15px;transition:background var(--fast),border-color var(--fast)}
+.hero-offer b{color:var(--gold-2);font-weight:500;white-space:nowrap}
+.hero-offer svg{flex:none;color:var(--gold-2);transition:transform var(--mid) var(--ease)}
+.hero-offer .dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 0 0 rgba(226,205,106,.6);animation:offerPing 2.4s ease-out infinite}
+@keyframes offerPing{0%{box-shadow:0 0 0 0 rgba(226,205,106,.55)}70%,100%{box-shadow:0 0 0 12px rgba(226,205,106,0)}}
+@media (hover:hover) and (pointer:fine){.hero-offer:hover{background:rgba(226,205,106,.2);border-color:var(--gold-2)}.hero-offer:hover svg{transform:translateX(4px)}}
+.hero-wall .hero-offer+.hero-ig{display:flex;width:max-content;margin-top:16px}
+
+.wall-cols{position:absolute;top:0;bottom:0;right:0;width:52%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding:0 clamp(16px,3vw,48px) 0 0;z-index:0;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.wcol{position:relative;overflow:hidden;min-width:0}
+.wtrack{display:flex;flex-direction:column;gap:16px;animation:wallUp 70s linear infinite;will-change:transform}
+.wcol-2 .wtrack{animation-name:wallDown;animation-duration:84s}
+.wcol-3 .wtrack{animation-duration:62s;animation-delay:-20s}
+@keyframes wallUp{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 8px))}}
+@keyframes wallDown{from{transform:translateY(calc(-50% - 8px))}to{transform:translateY(0)}}
+.wc{margin:0;position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;background:#3a2a20;border:1px solid rgba(226,205,106,.18)}
+.wc img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
+.wc figcaption{position:absolute;left:10px;right:10px;bottom:10px;padding:6px 10px;border-radius:10px;background:rgba(30,19,16,.78);color:var(--gold-2);font-size:12px;font-weight:500;line-height:1.25;text-transform:lowercase}
+.wc figcaption::first-letter{text-transform:uppercase}
+.wall-shade{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,var(--walnut-3) 0,var(--walnut-3) 44%,rgba(30,19,16,.55) 56%,rgba(30,19,16,0) 72%),
+  radial-gradient(600px 400px at 20% 20%,rgba(226,205,106,.08),transparent 70%)}
+@media (prefers-reduced-motion:reduce){.wtrack{animation:none}.hero-offer .dot{animation:none}}
+@media (max-width:1100px){.wall-cols{width:56%}.hero-wall .hero-text{max-width:52%}}
+@media (max-width:860px){
+  .hero-wall{min-height:calc(100svh - var(--hdr));display:flex;flex-direction:column;align-items:stretch;padding:0 0 calc(84px + env(safe-area-inset-bottom))}
+  .wall-cols{position:relative;width:auto;height:clamp(200px,34svh,300px);right:auto;padding:0 16px;gap:10px;flex:none;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 70%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 10%,#000 70%,transparent 100%)}
+  .wtrack{gap:10px}
+  @keyframes wallUp{from{transform:translateY(0)}to{transform:translateY(calc(-50% - 5px))}}
+  @keyframes wallDown{from{transform:translateY(calc(-50% - 5px))}to{transform:translateY(0)}}
+  .wc{border-radius:12px}
+  .wc figcaption{left:6px;right:6px;bottom:6px;padding:4px 6px;font-size:11px;border-radius:8px}
+  .wall-shade{background:linear-gradient(180deg,rgba(30,19,16,0) 0,rgba(30,19,16,0) 20%,var(--walnut-3) 34%)}
+  .hero-wall>.wrap{margin-top:-28px}
+  .hero-wall .hero-text{max-width:none}
+  .hero-wall h1{font-size:clamp(30px,8.6vw,40px)}
+  .hero-offer{font-size:14px;padding:10px 14px;gap:10px;flex-wrap:wrap}
+}
+@media (max-width:860px) and (max-height:700px){.wall-cols{height:150px}}
+
+/* ===== схема здания отдельным блоком ===== */
+.house-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(24px,4vw,56px);align-items:center}
+.house-side .lead{margin-top:0}
+.house-btns{margin-top:20px}
+@media (max-width:860px){.house-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:860px){
+  .hero-wall>.wrap{margin-top:-14px}
+  .hero-offer{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;column-gap:10px;row-gap:2px;width:100%;border-radius:18px}
+  .hero-offer b{grid-column:2;grid-row:2}
+  .hero-offer svg{grid-column:3;grid-row:1/3}
+  .hero-offer .dot{grid-row:1/3}
+}
+@media (max-width:860px) and (max-height:700px){.hero-wall>.wrap{margin-top:0}}
+.house .scene-cap{display:none}

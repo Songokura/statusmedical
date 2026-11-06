@@ -123,7 +123,7 @@
         var split = new SplitText(h, { type: 'lines', linesClass: 'line', reduceWhiteSpace: false });
         gsap.from(split.lines, { yPercent: 110, opacity: 0, duration: 1.1, stagger: 0.08, ease: 'power3.out', delay: 0.1 });
       });
-      gsap.from('.hero-text .kicker, .hero-text .lead, .hero-btns, .hero-ig', { y: 18, opacity: 0, duration: 0.9, stagger: 0.08, delay: 0.35 });
+      gsap.from('.hero-text .kicker, .hero-text .lead, .hero-btns, .hero-offer, .hero-ig', { y: 18, opacity: 0, duration: 0.9, stagger: 0.08, delay: 0.35 });
     });
   }
 
@@ -222,7 +222,7 @@
 
   /* ---------- живые сцены на паузе вне экрана ---------- */
   var pio = new IntersectionObserver(function (es) { es.forEach(function (en) { en.target.classList.toggle('paused', !en.isIntersecting); }); }, { threshold: 0 });
-  $$('.ward, .city, .corridor, .face, .ride, .hirurg .emblem, .facts').forEach(function (el) { pio.observe(el); });
+  $$('.ward, .city, .corridor, .ride, .facts, .wall-cols').forEach(function (el) { pio.observe(el); });
 
 
   /* ---------- карточки-комнаты: стена отъезжает ---------- */
