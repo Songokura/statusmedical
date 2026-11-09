@@ -663,6 +663,8 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 /* палата - фото */
 .ward.ward-ph{aspect-ratio:4/3;border:0;background:var(--stone-2)}
 .ward.ward-ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ward.ward-ph{position:relative;margin:0}
+.ward.ward-ph figcaption{position:absolute;left:16px;bottom:16px;padding:8px 14px;border-radius:999px;background:rgba(78,59,47,.72);color:#fff;font-size:14px;font-weight:500}
 /* похудение: фото в карточках этапов */
 .stage .st-ph{margin:-28px -28px 18px;aspect-ratio:16/10;overflow:hidden;border-radius:var(--r) var(--r) 0 0;background:var(--stone-2)}
 .stage .st-ph img{width:100%;height:100%;object-fit:cover;display:block}
