@@ -1210,3 +1210,98 @@ body.menu-open .gift-pill{display:none}
 @media (min-width:1301px) and (max-width:1499px){.hdr-phone{display:none}}
 @media (max-width:860px){.pw-badge{top:16px;bottom:auto}}
 .facts{background:var(--gr-1)}
+
+.zs-art{background:radial-gradient(420px 380px at 63% 50%,#FFFFFF,transparent 72%),linear-gradient(90deg,#FBF8F1 0,#F3EEE4 25%,#F7F2E8 25.1%)}
+.face-art .fa{stroke:#8A7550;stroke-width:2.2}
+.face-art .face,.face-art .hair{stroke:#6B5A3E;stroke-width:2.6}
+.face-art .hair2,.face-art .ear2,.face-art .eye2,.face-art .nose2,.face-art .neck2{stroke:#B8A57A;stroke-width:1.6}
+.face-art .lip{stroke:#A0705A;stroke-width:2.2}
+.face-art .pupil{fill:#6B5A3E}
+.zs-art .zp polyline{stroke:var(--gold);stroke-width:1.6;fill:none}
+.zs-art.drawn .fa{stroke-dasharray:none}
+/* прорисовка лица при появлении */
+.zs-art .fa{stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 2.4s cubic-bezier(.4,0,.2,1)}
+.zs-art .pupil{opacity:0;transition:opacity .6s 1.6s}
+.zs-art.in .fa{stroke-dashoffset:0}.zs-art.in .pupil{opacity:1}
+.zs-art .zp{opacity:0;transition:opacity .6s 1.8s}.zs-art.in .zp{opacity:1}
+@media (prefers-reduced-motion:reduce){.zs-art .fa{stroke-dasharray:none;transition:none}.zs-art .pupil,.zs-art .zp{opacity:1;transition:none}}
+.op-offer-top{margin-bottom:16px}
+.op-offer-top .of-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:1180px){.op-offer-top .of-list{grid-template-columns:minmax(0,1fr)}}
+
+/* похудение: двери кабинетов, за каждой - врач (12.11.2026, доработка схемы дверей) */
+.dr-wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(24px,4vw,64px);align-items:center}
+.dr-hall{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4vw,36px);padding:clamp(24px,3vw,44px) clamp(18px,3vw,44px) 0;border-radius:calc(var(--r) + 6px);background:linear-gradient(180deg,#FBF8F1 0,#F1EADB 100%);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.dr-hall::before{content:"";position:absolute;left:0;right:0;top:clamp(14px,1.6vw,22px);height:1px;background:rgba(192,168,48,.5)}
+.dr-floor{position:absolute;left:0;right:0;bottom:0;height:22px;background:linear-gradient(180deg,#DCD2BE,#E9E1D1);border-top:2px solid var(--walnut)}
+.dr{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:12px;padding:0;background:none;border:0;cursor:pointer;text-align:center}
+.dr-plate{display:inline-flex;padding:6px 14px;border-radius:999px;background:#fff;border:1px solid var(--gold);font-size:clamp(12px,1vw,14px);font-weight:500;color:var(--walnut);white-space:nowrap;transition:background var(--mid),color var(--mid)}
+.dr[aria-pressed="true"] .dr-plate{background:var(--gold);color:var(--walnut-3)}
+.dr-frame{position:relative;display:block;width:100%;aspect-ratio:5/9;margin-bottom:22px;border:clamp(6px,.7vw,10px) solid #fff;border-bottom:0;border-radius:6px 6px 0 0;background:#8F8C8E;box-shadow:0 0 0 1px rgba(74,52,38,.25),0 30px 40px -30px rgba(33,30,28,.6);perspective:1200px;overflow:visible}
+.dr-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 10%;filter:brightness(.55) saturate(.8);transition:filter .9s var(--ease)}
+.dr-leaf{position:absolute;inset:0;transform-origin:left center;transform:rotateY(0);transition:transform 1.1s cubic-bezier(.6,.05,.25,1);background:linear-gradient(100deg,#FFFFFF 0,#F6F0E3 100%);box-shadow:inset 0 0 0 1px rgba(74,52,38,.12);transform-style:preserve-3d;backface-visibility:visible}
+.dr-leaf::before,.dr-leaf::after{content:"";position:absolute;left:14%;right:14%;border:1.5px solid rgba(192,168,48,.55);border-radius:4px}
+.dr-leaf::before{top:7%;height:38%}.dr-leaf::after{bottom:7%;height:38%}
+.dr-knob{position:absolute;right:9%;top:52%;width:10px;height:28px;border-radius:6px;background:linear-gradient(180deg,#E2CD6A,#9E871C);box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.dr[aria-pressed="true"] .dr-leaf{transform:rotateY(-108deg);box-shadow:inset 0 0 0 1px rgba(74,52,38,.12),-20px 0 40px rgba(0,0,0,.15)}
+.dr[aria-pressed="true"] .dr-frame img{filter:none}
+@media (hover:hover) and (pointer:fine){.dr[aria-pressed="false"]:hover .dr-leaf{transform:rotateY(-18deg)}.dr[aria-pressed="false"]:hover .dr-frame img{filter:brightness(.8)}}
+.dr:focus-visible{outline:2px solid var(--gold);outline-offset:6px;border-radius:8px}
+.dr-info{position:relative;min-height:340px}
+.dr-card{display:none;flex-direction:column;gap:10px;align-items:flex-start;padding:clamp(22px,2.6vw,34px);border-radius:calc(var(--r) + 4px);background:#fff;border:1px solid var(--line);box-shadow:0 30px 60px -40px rgba(33,30,28,.45)}
+.dr-card.on{display:flex;animation:drIn .6s var(--ease)}
+@keyframes drIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.dr-card .spec{color:var(--gold-3);font-size:14px;font-weight:500}
+.dr-card h3{font-size:clamp(22px,2vw,28px);font-weight:400}
+.dr-list{display:grid;gap:10px;margin:6px 0 2px}
+.dr-list li{display:flex;gap:12px;font-size:15.5px;line-height:1.45}
+.dr-list li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-top:8px}
+.dr-x{color:var(--mute);font-size:14.5px}
+.dr-card .btn{margin-top:8px}
+@media (max-width:860px){
+  .dr-wrap{grid-template-columns:minmax(0,1fr)}
+  .dr-hall{gap:10px;padding:22px 12px 0}
+  .dr-plate{padding:5px 8px;font-size:11px;white-space:normal;line-height:1.2;min-height:2.6em;align-items:center}
+  .dr-info{min-height:0}
+  .dr-card .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){.dr-leaf{transition:none}.dr-card.on{animation:none}}
+
+/* акция: заголовок одной строкой */
+.gift{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}
+.gift-body h2{font-size:clamp(30px,3.6vw,54px);white-space:nowrap}
+.gift-x{max-width:none}
+@media (max-width:1180px){.gift-body h2{white-space:normal}}
+/* контакты: слева фото и карта, справа данные и форма */
+.ct-left{display:flex;flex-direction:column;gap:18px;min-width:0}
+.contact .ct-left .photo{aspect-ratio:4/3;max-height:none}
+.contact .ct-left .photo img{object-position:50% 45%}
+.ct-left .map2gis{margin:0;height:clamp(300px,26vw,400px)}
+#kontakty .contact{align-items:start}
+#kontakty .form{margin-top:22px}
+/* тур: схема этажа */
+.tr-plan-wrap{border-radius:16px;background:#fff;border:1px solid var(--line);padding:10px}
+.tr-plan{width:100%;height:auto;display:block}
+.pl-out{fill:#FBF8F1;stroke:var(--walnut);stroke-width:2}
+.pl-cor{fill:#F1EADB}
+.pl-room{cursor:pointer}
+.pl-room rect{fill:#fff;stroke:rgba(74,52,38,.35);stroke-width:1.2;transition:fill .35s,stroke .35s}
+.pl-room text{font-family:"Onest",sans-serif;font-size:11.5px;font-weight:500;fill:var(--walnut);pointer-events:none}
+.pl-door{stroke:var(--gold);stroke-width:3;stroke-linecap:round}
+.pl-room:hover rect{stroke:var(--gold);fill:#FFFDF6}
+.pl-room.on rect{fill:var(--gr-2);stroke:var(--gr-2)}
+.pl-room.on text{fill:#fff}
+.pl-walker{fill:var(--gold);transition:transform .45s cubic-bezier(.45,0,.25,1)}
+.pl-walker .w-halo{fill:rgba(192,168,48,.25);animation:trPing 1.6s var(--ease) infinite;transform-box:fill-box;transform-origin:center}
+.pl-route{fill:none;stroke:var(--gold);stroke-width:2.5;stroke-dasharray:5 6;opacity:.9}
+.pl-entry{font-family:"Onest",sans-serif;font-size:10px;fill:var(--mute);letter-spacing:.1em;text-transform:uppercase}
+.tr-chk{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.tr-chk .hero-stats{margin-top:0;min-height:0}
+@media (max-width:860px){.pl-room text{font-size:13px}.tour-side .tr-plan-wrap{order:0}}
+@media (prefers-reduced-motion:reduce){.pl-walker{transition:none}.pl-walker .w-halo{animation:none}}
+#dayStats{display:none;flex-wrap:wrap;gap:8px}
+#dayStats.on{display:flex}
+.hero-stats span.in{opacity:1;transform:none;transition:opacity .4s var(--ease),transform .4s var(--ease)}
+@media (min-width:861px){.ops:has(.zs-art){grid-template-columns:minmax(0,6fr) minmax(0,6fr)}}
+@media (max-width:860px){.tr-plan-wrap{display:none}}
+@media (min-width:861px){.tour-grid{align-items:start}.tour-stage{position:sticky;top:calc(var(--hdr) + 24px)}}

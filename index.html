@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261112-1">
+<link rel="stylesheet" href="styles.css?v=20261112-2">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -192,6 +192,7 @@
       </div>
       <div class="tour-side">
         <p class="tr-hint"><span class="tr-dot" aria-hidden="true"></span><span data-i18n="t.hint">Нажмите на кабинет - фото сменится</span></p>
+        <div class="tr-plan-wrap"><svg class="tr-plan" viewBox="0 0 400 172" role="img" aria-label="Схема этажа: кабинеты центра"><rect class="pl-out" x="2" y="2" width="396" height="168" rx="12"/><rect class="pl-cor" x="2" y="70" width="396" height="32"/><path class="pl-in" d="M2 160 h0"/><g class="pl-room" data-k="priem" tabindex="-1"><rect x="12" y="12" width="91" height="56" rx="6"/><line class="pl-door" x1="46" y1="68" x2="68" y2="68"/><text x="57" y="45" text-anchor="middle" data-i18n="t.p2">Специалисты</text></g><g class="pl-room" data-k="uzi" tabindex="-1"><rect x="107" y="12" width="91" height="56" rx="6"/><line class="pl-door" x1="141" y1="68" x2="163" y2="68"/><text x="152" y="45" text-anchor="middle" data-i18n="t.p3">УЗИ</text></g><g class="pl-room" data-k="lor" tabindex="-1"><rect x="202" y="12" width="91" height="56" rx="6"/><line class="pl-door" x1="236" y1="68" x2="258" y2="68"/><text x="247" y="45" text-anchor="middle" data-i18n="t.p4">ЛОР</text></g><g class="pl-room" data-k="oft" tabindex="-1"><rect x="297" y="12" width="91" height="56" rx="6"/><line class="pl-door" x1="331" y1="68" x2="353" y2="68"/><text x="342" y="45" text-anchor="middle" data-i18n="t.p5">Офтальмолог</text></g><g class="pl-room" data-k="reg" tabindex="-1"><rect x="12" y="104" width="91" height="56" rx="6"/><line class="pl-door" x1="46" y1="104" x2="68" y2="104"/><text x="57" y="137" text-anchor="middle" data-i18n="t.p1">Регистратура</text></g><g class="pl-room" data-k="endo" tabindex="-1"><rect x="107" y="104" width="91" height="56" rx="6"/><line class="pl-door" x1="141" y1="104" x2="163" y2="104"/><text x="152" y="137" text-anchor="middle" data-i18n="t.p6">Эндоскопия</text></g><g class="pl-room" data-k="oper" tabindex="-1"><rect x="202" y="104" width="91" height="56" rx="6"/><line class="pl-door" x1="236" y1="104" x2="258" y2="104"/><text x="247" y="137" text-anchor="middle" data-i18n="t.p7">Операционная</text></g><g class="pl-room" data-k="apt" tabindex="-1"><rect x="297" y="104" width="91" height="56" rx="6"/><line class="pl-door" x1="331" y1="104" x2="353" y2="104"/><text x="342" y="137" text-anchor="middle" data-i18n="t.p8">Аптека</text></g><path class="pl-route" d="M0 0"/><g class="pl-walker"><circle r="11" class="w-halo"/><circle r="6"/></g></svg></div>
         <ul class="tour-list" aria-label="Кабинеты центра">
           <li><button type="button" class="tr-b on" data-k="reg" data-href="#zapis" aria-pressed="true"><span class="tr-t" data-i18n="t.1t">Регистратура</span><span class="tr-x" data-i18n="t.1x">Запись на приём, оплата услуг и Kaspi рассрочка, регистратура ОСМС.</span></button></li>
           <li><button type="button" class="tr-b" data-k="priem" data-href="#priem" aria-pressed="false"><span class="tr-t" data-i18n="t.2t">Кабинеты специалистов</span><span class="tr-x" data-i18n="t.2x">Более 40 врачей: терапевт, кардиолог, эндокринолог, невролог, гинеколог, педиатр и другие узкие специалисты.</span></button></li>
@@ -202,6 +203,7 @@
           <li><button type="button" class="tr-b" data-k="oper" data-href="plastika/" aria-pressed="false"><span class="tr-t" data-i18n="t.7t">Операционный блок</span><span class="tr-x" data-i18n="t.7x">Собственный операционный блок: хирургия, пластические операции, дневной стационар.</span></button></li>
           <li><button type="button" class="tr-b" data-k="apt" data-href="#kontakty" aria-pressed="false"><span class="tr-t" data-i18n="t.8t">Аптечный пункт</span><span class="tr-x" data-i18n="t.8x">Аптечный пункт в здании центра - препараты по назначению врача сразу после приёма.</span></button></li>
         </ul>
+        <div class="tr-chk"><button class="btn ghost sm" type="button" id="trCheckup"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5l12 7-12 7z"/></svg><span data-i18n="h.btn2">Чек-ап за один день</span></button><div class="hero-stats" id="dayStats" aria-live="polite"><span data-i18n="h.s1">Консультация кардиолога</span><span data-i18n="h.s2">УЗИ сердца</span><span data-i18n="h.s3">ЭКГ с расшифровкой</span><span class="num">25&nbsp;000&nbsp;₸</span><span data-i18n="h.s5">один визит</span></div></div>
         <a class="btn ghost sm tr-link" href="#zapis"><span data-i18n="t.go">Перейти к направлению</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </div>
@@ -227,7 +229,7 @@
       <div class="gift-ph"><img src="assets/photos/c-reception3.webp" alt="Пациентка у стойки регистратуры центра" width="900" height="1125" loading="lazy" decoding="async"></div>
       <div class="gift-body">
         <span class="pr-tag" data-i18n="pr.k">Акция центра</span>
-        <h2 data-i18n="pr.h2">Экспресс-чек-ап <em>в подарок</em></h2>
+        <h2 data-i18n="pr.h2">Экспресс‑чек‑ап <em>в&nbsp;подарок</em></h2>
         <p class="gift-x" data-i18n="pr.1x">Экспресс-чек-ап на квантовом биоанализаторе: пациент держит датчик в руке, за минуту программа формирует отчёт на 40 страниц с подсказками, какие показатели стоит проверить у врача.</p>
         <div class="gift-price"><s class="num">10&nbsp;000&nbsp;₸</s><b class="num">0&nbsp;₸</b></div>
         <p class="gift-when" data-i18n="pr.when">Подарок при записи на приём к врачу, на чек-ап, к пластическому хирургу или на программу снижения веса.</p>
@@ -604,7 +606,8 @@
 <!-- КОНТАКТЫ -->
 <section class="sec white" id="kontakty">
   <div class="wrap contact">
-    <div class="photo rv"><img src="assets/photos/c-fasad.webp" alt="Фасад Status Medical Center, ул. Кокжал Барака, 19" loading="lazy" width="900" height="1125"><div class="wall"></div></div>
+    <div class="ct-left"><div class="photo rv"><img src="assets/photos/c-fasad.webp" alt="Фасад Status Medical Center, ул. Кокжал Барака, 19" loading="lazy" width="900" height="1125"><div class="wall"></div></div>
+      <div class="map2gis"><iframe src="https://widgets.2gis.com/widget?type=firmsonmap&amp;options=%7B%22pos%22%3A%7B%22lat%22%3A49.890675%2C%22lon%22%3A82.619871%2C%22zoom%22%3A16%7D%2C%22opt%22%3A%7B%22city%22%3A%22ustkam%22%7D%2C%22org%22%3A%2270000001094610882%2C%22%7D" title="Status Medical Center на карте 2ГИС" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>
     <div>
       <span class="kicker" data-i18n="k.k">Контакты</span>
       <h2 data-i18n="k.h2">Адрес <em>и график</em></h2>
@@ -620,7 +623,7 @@
         <a class="btn ghost ig-btn" href="https://www.instagram.com/status_medical_center" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#ic-ig"/></svg><span data-i18n="k.ig">Клиника в Instagram</span></a>
         <a class="btn gold wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться в Status Medical Center."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="k.b2">Написать в WhatsApp</span></a>
       </div>
-      <div class="map2gis"><iframe src="https://widgets.2gis.com/widget?type=firmsonmap&amp;options=%7B%22pos%22%3A%7B%22lat%22%3A49.890675%2C%22lon%22%3A82.619871%2C%22zoom%22%3A16%7D%2C%22opt%22%3A%7B%22city%22%3A%22ustkam%22%7D%2C%22org%22%3A%2270000001094610882%2C%22%7D" title="Status Medical Center на карте 2ГИС" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      
       <form class="form" id="leadForm" data-tpl="Здравствуйте. Прошу перезвонить: {name}, {phone}. Направление: {dir}.">
         <b class="form-h" data-i18n="k.cb">Заказать обратный звонок</b>
         <label><span data-i18n="k.f1">Имя</span><input type="text" name="name" required autocomplete="name"></label>
@@ -666,6 +669,6 @@
 <script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/vendor/SplitText.min.js"></script>
 <script src="assets/vendor/lenis.min.js"></script>
-<script src="script.js?v=20261112-1"></script>
+<script src="script.js?v=20261112-2"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=20261112-1">
+<link rel="stylesheet" href="../styles.css?v=20261112-2">
 <script type="application/ld+json">
 [
  {
@@ -244,18 +244,50 @@
   </div>
 </section>
 
-<!-- ВРАЧИ ПРОГРАММЫ -->
-<section class="sec white" id="vrachi">
+<!-- ВРАЧИ ПРОГРАММЫ: три двери, за каждой - врач -->
+<section class="sec stone" id="vrachi">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="kicker" data-i18n="v.k">Врачи программы</span>
       <h2 data-i18n="v.h2">Врачи <em>программы</em></h2>
-      <p class="lead" data-i18n="v.lead">Снижение веса ведёт эндокринолог, при необходимости к программе подключаются гастроэнтеролог и психолог центра.</p>
+      <p class="lead" data-i18n="v.lead">Снижение веса ведёт эндокринолог, при необходимости к программе подключаются гастроэнтеролог и психолог центра. Нажмите на дверь кабинета, чтобы познакомиться с врачом.</p>
     </div>
-    <div class="pw-docs">
-      <article class="pw-doc lead-doc rv"><figure><img src="../assets/photos/doc-oraziman.webp" alt="Оразиман Айғаным Дулатқызы" width="600" height="800" loading="lazy" decoding="async"></figure><div><span class="spec" data-i18n="v.1s">Эндокринолог, ведущий врач программы</span><h3>Оразиман Айғаным Дулатқызы</h3><p data-i18n="v.1x">Назначает обследование и терапию, контролирует дефициты и ведёт замеры. Специализация: ожирение и избыточный вес, сахарный диабет 1 и 2 типа, заболевания щитовидной железы, нарушения обмена веществ.</p></div></article>
-      <article class="pw-doc rv d1"><figure><img src="../assets/photos/doc-umarhanova.webp" alt="Умарханова Дария Руслановна" width="600" height="800" loading="lazy" decoding="async"></figure><div><span class="spec" data-i18n="v.2s">Гастроэнтеролог</span><h3>Умарханова Дария Руслановна</h3><p data-i18n="v.2x">Состояние желудочно-кишечного тракта во время снижения веса, ФГДС и УЗИ по показаниям.</p></div></article>
-      <article class="pw-doc rv d2"><figure><img src="../assets/photos/doc-shokenova.webp" alt="Шокенова Назгуль Алкешовна" width="600" height="800" loading="lazy" decoding="async"></figure><div><span class="spec" data-i18n="v.3s">Психолог, стаж 31&nbsp;год</span><h3>Шокенова Назгуль Алкешовна</h3><p data-i18n="v.3x">Работа с пищевым поведением и поддержка пациента на протяжении программы.</p></div></article>
+    <div class="dr-wrap">
+      <div class="dr-hall rv" role="group" aria-label="Кабинеты врачей программы">
+        <button class="dr" type="button" data-door="endo" aria-pressed="false" aria-controls="dri-endo">
+          <span class="dr-plate" data-i18n="v.d1">Эндокринолог</span>
+          <span class="dr-frame"><img src="../assets/photos/doc-oraziman.webp" alt="Оразиман Айғаным Дулатқызы" width="600" height="800" loading="lazy" decoding="async"><span class="dr-leaf" aria-hidden="true"><i class="dr-knob"></i></span></span>
+        </button>
+        <button class="dr" type="button" data-door="gastro" aria-pressed="false" aria-controls="dri-gastro">
+          <span class="dr-plate" data-i18n="v.d2">Гастроэнтеролог</span>
+          <span class="dr-frame"><img src="../assets/photos/doc-umarhanova.webp" alt="Умарханова Дария Руслановна" width="600" height="800" loading="lazy" decoding="async"><span class="dr-leaf" aria-hidden="true"><i class="dr-knob"></i></span></span>
+        </button>
+        <button class="dr" type="button" data-door="psy" aria-pressed="false" aria-controls="dri-psy">
+          <span class="dr-plate" data-i18n="v.d3">Психолог</span>
+          <span class="dr-frame"><img src="../assets/photos/doc-shokenova.webp" alt="Шокенова Назгуль Алкешовна" width="600" height="800" loading="lazy" decoding="async"><span class="dr-leaf" aria-hidden="true"><i class="dr-knob"></i></span></span>
+        </button>
+        <span class="dr-floor" aria-hidden="true"></span>
+      </div>
+      <div class="dr-info rv d1">
+        <article class="dr-card" id="dri-endo" data-door="endo">
+          <span class="spec" data-i18n="v.1s">Эндокринолог, ведущий врач программы</span>
+          <h3>Оразиман Айғаным Дулатқызы</h3>
+          <ul class="dr-list"><li data-i18n="v.1a">Проводит первичный приём и назначает анализы и УЗИ</li><li data-i18n="v.1b">Подбирает инкретиновую терапию и дозировку</li><li data-i18n="v.1c">Контролирует дефициты, рассчитывает белки, жиры и углеводы</li><li data-i18n="v.1d">Ведёт замеры веса и объёмов на повторных приёмах</li></ul><p class="dr-x" data-i18n="v.1x">Специализация: ожирение и избыточный вес, сахарный диабет 1 и 2 типа, заболевания щитовидной железы, нарушения обмена веществ.</p>
+          <a class="btn gold wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться по программе снижения веса: Оразиман Айғаным Дулатқызы, эндокринолог."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="v.btnendo">Записаться к эндокринологу</span></a>
+        </article>
+        <article class="dr-card" id="dri-gastro" data-door="gastro">
+          <span class="spec" data-i18n="v.2s">Гастроэнтеролог</span>
+          <h3>Умарханова Дария Руслановна</h3>
+          <ul class="dr-list"><li data-i18n="v.2a">Оценивает состояние желудочно-кишечного тракта перед стартом терапии</li><li data-i18n="v.2b">При показаниях назначает ФГДС и УЗИ органов брюшной полости</li><li data-i18n="v.2c">Сопровождает пациентов с жалобами со стороны ЖКТ во время программы</li></ul>
+          <a class="btn gold wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться по программе снижения веса: Умарханова Дария Руслановна, гастроэнтеролог."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="v.btngastro">Записаться к гастроэнтерологу</span></a>
+        </article>
+        <article class="dr-card" id="dri-psy" data-door="psy">
+          <span class="spec" data-i18n="v.3s">Психолог, стаж 31&nbsp;год</span>
+          <h3>Шокенова Назгуль Алкешовна</h3>
+          <ul class="dr-list"><li data-i18n="v.3a">Работа с пищевым поведением и привычками</li><li data-i18n="v.3b">Поддержка мотивации на протяжении программы</li><li data-i18n="v.3c">Подключается по показаниям и по желанию пациента</li></ul>
+          <a class="btn gold wa" href="https://wa.me/77052221462" data-wa="Здравствуйте. Хочу записаться по программе снижения веса: Шокенова Назгуль Алкешовна, психолог."><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="v.btnpsy">Записаться к психологу</span></a>
+        </article>
+      </div>
     </div>
     <p class="note" data-i18n="v.line">Второй эндокринолог центра - Кенесова Мөлдір Қайратқызы.</p>
   </div>
@@ -339,6 +371,6 @@
 <script src="../assets/vendor/ScrollTrigger.min.js"></script>
 <script src="../assets/vendor/SplitText.min.js"></script>
 <script src="../assets/vendor/lenis.min.js"></script>
-<script src="../script.js?v=20261112-1"></script>
+<script src="../script.js?v=20261112-2"></script>
 </body>
 </html>

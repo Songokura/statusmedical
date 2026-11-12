@@ -270,6 +270,8 @@
     if (hasGsap && !reduced) gsap.from('#docs .doc', { y: 30, opacity: 0, duration: .8, stagger: .04, scrollTrigger: { trigger: '#docs', start: 'top 80%' }, clearProps: 'transform,opacity' });
   }
 
+  /* схема зон: линии лица прорисовываются при появлении */
+  $$('.zs-art').forEach(function (z) { new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { z.classList.add('in'); o.disconnect(); } }, { threshold: .3 }).observe(z); });
   /* ---------- пластика: фото зон и группы операций ---------- */
   var face = $('#face');
   if (face) {
@@ -456,19 +458,72 @@
   if (tour) {
     var tSl = $$('.tr-sl', tour), tB = $$('.tr-b', tour), tLink = $('.tr-link', tour), tBar = $('.tr-bar i', tour);
     var tCur = 0, tAuto = !reduced, tVis = false, TDUR = 5000, tTimer = null;
-    function tShow(n, user) {
+    var tShow = function (n, user) {
       n = (n + tSl.length) % tSl.length; tCur = n;
       tSl.forEach(function (f, i) { f.classList.toggle('on', i === n); });
       tB.forEach(function (b, i) { b.classList.toggle('on', i === n); b.setAttribute('aria-pressed', i === n ? 'true' : 'false'); });
       if (tLink) tLink.setAttribute('href', tB[n].getAttribute('data-href'));
+      if (window.__planGo) window.__planGo(tB[n].getAttribute('data-k'));
       if (user) { tAuto = false; tour.classList.add('touched'); }
       if (tBar) { tBar.classList.remove('run'); void tBar.offsetWidth; if (tAuto) { tour.style.setProperty('--tr-dur', TDUR + 'ms'); tBar.classList.add('run'); } }
-    }
+    };
     tB.forEach(function (b, i) { b.addEventListener('click', function () { tShow(i, true); }); });
     $$('.tr-nav button', tour).forEach(function (b) { b.addEventListener('click', function () { tShow(tCur + parseInt(b.getAttribute('data-dir'), 10), true); }); });
     new IntersectionObserver(function (es) { tVis = es[0].isIntersecting; }, { threshold: .3 }).observe(tour);
     setInterval(function () { if (tAuto && tVis && !document.hidden) tShow(tCur + 1); }, TDUR);
     tShow(0);
+  }
+
+  /* ---------- похудение: двери кабинетов ---------- */
+  var drs = $$('.dr');
+  if (drs.length) {
+    var drCards = $$('.dr-card');
+    function drOpen(k) {
+      drs.forEach(function (d) { d.setAttribute('aria-pressed', d.getAttribute('data-door') === k ? 'true' : 'false'); });
+      drCards.forEach(function (c) { c.classList.toggle('on', c.getAttribute('data-door') === k); });
+    }
+    drs.forEach(function (d) { d.addEventListener('click', function () { drOpen(d.getAttribute('data-door')); }); });
+    drCards[0].classList.add('on');
+    /* первая дверь открывается, когда коридор появляется на экране */
+    new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { setTimeout(function () { drOpen(drs[0].getAttribute('data-door')); }, reduced ? 0 : 500); o.disconnect(); } }, { threshold: .4 }).observe($('.dr-hall'));
+  }
+
+  /* ---------- тур: схема этажа, точка идёт по коридору к кабинету ---------- */
+  var plan = $('.tr-plan');
+  if (plan && tour) {
+    var walker = $('.pl-walker', plan), route = $('.pl-route', plan), rooms = $$('.pl-room', plan);
+    var COR = 86, pos = { x: 57, y: 98 }, legT = null;
+    function roomPt(k) {
+      var r = $('.pl-room[data-k="' + k + '"] rect', plan); if (!r) return null;
+      var x = +r.getAttribute('x') + 45, y = +r.getAttribute('y');
+      return { x: x, y: y < 70 ? 74 : 98 };
+    }
+    function put(p) { walker.style.transform = 'translate(' + p.x + 'px,' + p.y + 'px)'; pos = p; }
+    put(pos);
+    window.__planGo = function (k) {
+      rooms.forEach(function (r) { r.classList.toggle('on', r.getAttribute('data-k') === k); });
+      var t = roomPt(k); if (!t) return;
+      var legs = [{ x: pos.x, y: COR }, { x: t.x, y: COR }, t];
+      route.setAttribute('d', 'M' + pos.x + ' ' + pos.y + ' L' + legs.map(function (l) { return l.x + ' ' + l.y; }).join(' L'));
+      clearTimeout(legT);
+      if (reduced) { put(t); return; }
+      var i = 0;
+      (function step() { put(legs[i]); i++; if (i < legs.length) legT = setTimeout(step, 450); })();
+    };
+    rooms.forEach(function (r) { r.addEventListener('click', function () { var i = tB.map(function (b) { return b.getAttribute('data-k'); }).indexOf(r.getAttribute('data-k')); if (i > -1) tShow(i, true); }); });
+    window.__planGo(tB[tCur].getAttribute('data-k'));
+    /* маршрут чек-апа за один визит: регистратура -> кардиолог -> УЗИ сердца */
+    var cBtn = $('#trCheckup'), cStats = $('#dayStats');
+    if (cBtn) cBtn.addEventListener('click', function () {
+      var seq = ['reg', 'priem', 'uzi'], j = 0;
+      if (cStats) { cStats.classList.remove('on'); $$('span', cStats).forEach(function (sp) { sp.classList.remove('in'); }); }
+      (function nx() {
+        var i = tB.map(function (b) { return b.getAttribute('data-k'); }).indexOf(seq[j]);
+        tShow(i, true); j++;
+        if (j < seq.length) setTimeout(nx, 1700);
+        else if (cStats) { cStats.classList.add('on'); $$('span', cStats).forEach(function (sp, q) { setTimeout(function () { sp.classList.add('in'); }, 200 + q * 160); }); }
+      })();
+    });
   }
 
   /* ---------- график: вкладки и данные из Google-таблицы ---------- */
