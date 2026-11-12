@@ -78,9 +78,10 @@
       e.preventDefault();
       var tpl = f.getAttribute('data-tpl');
       var d = {};
-      $$('input,select', f).forEach(function (i) { d[i.name] = i.value.trim(); });
+      $$('input,select,textarea', f).forEach(function (i) { d[i.name] = i.value.trim(); });
       var text = tpl.replace(/\{(\w+)\}/g, function (_, k) { return d[k] || ''; });
-      window.open(WA + encodeURIComponent(text), '_blank', 'noopener');
+      var to = f.getAttribute('data-wa-to');
+      window.open((to ? 'https://wa.me/' + to + '?text=' : WA) + encodeURIComponent(text), '_blank', 'noopener');
       var note = $('small', f);
       if (note) { note.classList.add('thanks'); note.textContent = (document.documentElement.lang === 'kk' && KK && KK['form.thanks']) || 'Спасибо! Открылся WhatsApp - отправьте сообщение.'; }
     });
@@ -414,6 +415,101 @@
     var set = function () { box.style.setProperty('--p', r.value + '%'); };
     r.addEventListener('input', set); set();
   });
+
+  /* ---------- акция: общий таймер 24 часа на посетителя, по истечении начинается заново ---------- */
+  var GKEY = 'statusmed-gift-end', DAY = 864e5;
+  function giftEnd() {
+    var now = Date.now(), end = 0;
+    try { end = parseInt(localStorage.getItem(GKEY), 10) || 0; } catch (e) {}
+    if (!end || end <= now) { end = now + DAY; try { localStorage.setItem(GKEY, String(end)); } catch (e) {} }
+    return end;
+  }
+  var GIFT_WA = 'Здравствуйте. Хочу записаться и получить экспресс-чек-ап в подарок.';
+  /* плашка-напоминание на всех страницах: не перекрывает контент, сворачивается в значок */
+  var gp = document.createElement('aside');
+  gp.className = 'gift-pill';
+  gp.setAttribute('aria-label', 'Акция');
+  gp.innerHTML = '<a class="gp-main wa" href="' + WA + encodeURIComponent(GIFT_WA) + '" target="_blank" rel="noopener">' +
+    '<svg class="gp-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1.5S9 8 12 8zm0 0c2-4 6-4 6-1.5S15 8 12 8z"/></svg>' +
+    '<span class="gp-t"><b data-i18n="gp.t">Экспресс-чек-ап в подарок</b><span><span data-i18n="gp.x">Запишитесь сейчас, осталось</span> <i class="num" data-timer>24:00:00</i></span></span></a>' +
+    '<button class="gp-x" type="button" aria-label="Свернуть"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+  document.body.appendChild(gp);
+  var GPS = 'statusmed-gift-min';
+  try { if (sessionStorage.getItem(GPS)) gp.classList.add('min'); } catch (e) {}
+  $('.gp-x', gp).addEventListener('click', function () { gp.classList.add('min'); try { sessionStorage.setItem(GPS, '1'); } catch (e) {} });
+  gp.addEventListener('click', function (e) { if (gp.classList.contains('min') && !e.target.closest('.gp-x')) { e.preventDefault(); gp.classList.remove('min'); try { sessionStorage.removeItem(GPS); } catch (er) {} } }, true);
+  setTimeout(function () { gp.classList.add('show'); }, 2500);
+  /* через 12 секунд плашка сворачивается в значок, чтобы не закрывать текст; по наведению раскрывается */
+  setTimeout(function () { gp.classList.add('min'); }, 14500);
+  gp.addEventListener('mouseenter', function () { if (matchMedia('(hover:hover)').matches) gp.classList.remove('min'); });
+  gp.addEventListener('mouseleave', function () { if (matchMedia('(hover:hover)').matches) gp.classList.add('min'); });
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function tick() {
+    var left = Math.max(0, giftEnd() - Date.now()), t = Math.floor(left / 1000);
+    var txt = pad(Math.floor(t / 3600)) + ':' + pad(Math.floor(t / 60) % 60) + ':' + pad(t % 60);
+    $$('[data-timer]').forEach(function (el) { el.textContent = txt; });
+  }
+  tick(); setInterval(tick, 1000);
+
+  /* ---------- тур по центру: фото кабинетов ---------- */
+  var tour = $('#tour');
+  if (tour) {
+    var tSl = $$('.tr-sl', tour), tB = $$('.tr-b', tour), tLink = $('.tr-link', tour), tBar = $('.tr-bar i', tour);
+    var tCur = 0, tAuto = !reduced, tVis = false, TDUR = 5000, tTimer = null;
+    function tShow(n, user) {
+      n = (n + tSl.length) % tSl.length; tCur = n;
+      tSl.forEach(function (f, i) { f.classList.toggle('on', i === n); });
+      tB.forEach(function (b, i) { b.classList.toggle('on', i === n); b.setAttribute('aria-pressed', i === n ? 'true' : 'false'); });
+      if (tLink) tLink.setAttribute('href', tB[n].getAttribute('data-href'));
+      if (user) { tAuto = false; tour.classList.add('touched'); }
+      if (tBar) { tBar.classList.remove('run'); void tBar.offsetWidth; if (tAuto) { tour.style.setProperty('--tr-dur', TDUR + 'ms'); tBar.classList.add('run'); } }
+    }
+    tB.forEach(function (b, i) { b.addEventListener('click', function () { tShow(i, true); }); });
+    $$('.tr-nav button', tour).forEach(function (b) { b.addEventListener('click', function () { tShow(tCur + parseInt(b.getAttribute('data-dir'), 10), true); }); });
+    new IntersectionObserver(function (es) { tVis = es[0].isIntersecting; }, { threshold: .3 }).observe(tour);
+    setInterval(function () { if (tAuto && tVis && !document.hidden) tShow(tCur + 1); }, TDUR);
+    tShow(0);
+  }
+
+  /* ---------- график: вкладки и данные из Google-таблицы ---------- */
+  var gBox = $('#grafikBox');
+  if (gBox) {
+    var gTabs = $$('.gr-tabs button');
+    gTabs.forEach(function (b) { b.addEventListener('click', function () {
+      gTabs.forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+      $$('.gr-table', gBox).forEach(function (t) { t.hidden = t.getAttribute('data-gr') !== b.getAttribute('data-gr'); });
+    }); });
+    var gId = gBox.getAttribute('data-sheet');
+    function csv(text) {
+      var rows = [], row = [], f = '', q = false;
+      for (var i = 0; i < text.length; i++) {
+        var c = text[i];
+        if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+        else if (c === '"') q = true;
+        else if (c === ',') { row.push(f); f = ''; }
+        else if (c === '\n' || c === '\r') { if (c === '\r' && text[i + 1] === '\n') i++; row.push(f); rows.push(row); row = []; f = ''; }
+        else f += c;
+      }
+      if (f || row.length) { row.push(f); rows.push(row); }
+      return rows;
+    }
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    if (gId && window.fetch) {
+      fetch('https://docs.google.com/spreadsheets/d/' + gId + '/export?format=csv', { cache: 'no-store' })
+        .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+        .then(function (t) {
+          if (/^\s*</.test(t)) throw 0;
+          var rows = csv(t).slice(1).filter(function (r) { return r.length >= 3 && r[1] && r[1].trim(); });
+          var groups = { paid: [], osms: [] };
+          rows.forEach(function (r) { (/осмс|гобмп/i.test(r[0]) ? groups.osms : groups.paid).push(r); });
+          Object.keys(groups).forEach(function (k) {
+            if (!groups[k].length) return;
+            var tb = $('.gr-table[data-gr="' + k + '"] tbody', gBox);
+            if (tb) tb.innerHTML = groups[k].map(function (r) { return '<tr><td>' + esc(r[1].trim()) + '</td><td>' + esc((r[2] || '-').trim()) + '</td><td>' + esc((r[3] || '-').trim()) + '</td><td>' + esc((r[4] || '-').trim()) + '</td></tr>'; }).join('');
+          });
+        }).catch(function () {});
+    }
+  }
 
   /* ---------- языки: RU в разметке, казахский словарь грузится только по выбору KZ или ?lang=kk ---------- */
   var KK = null, LKEY = 'statusmed-lang';
