@@ -1303,3 +1303,32 @@ body.menu-open .gift-pill{display:none}
 /* акция: фото не шире своей колонки (aspect-ratio + min-height:100% распирали его на текст) */
 @media (min-width:861px){.gift-ph{aspect-ratio:auto;min-height:0;max-height:none;height:100%;min-width:0;overflow:hidden}.gift{min-height:520px}}
 @media (max-width:860px){.gift{grid-template-columns:minmax(0,1fr)}.gift-ph{min-height:0;min-width:0;aspect-ratio:16/10}}
+
+/* направления списком в столбик (просьба клиники 12.11: «неровно встали, трудно читать - списком, в столбик») */
+@media (min-width:861px){
+  #napravleniya .plan{grid-template-columns:minmax(0,1fr);gap:16px}
+  #napravleniya .plan .room-card,#napravleniya .plan .room-card.wide{grid-column:auto;display:grid;grid-template-columns:minmax(0,330px) minmax(0,1fr) auto;grid-template-rows:auto 1fr;column-gap:32px;row-gap:10px;padding:0 28px 0 0;align-items:start;min-height:220px}
+  #napravleniya .room-card .rc-ph,#napravleniya .plan .room-card.wide .rc-ph{grid-column:1;grid-row:1/-1;margin:0;aspect-ratio:auto;height:100%;min-height:220px;border-radius:13px 0 0 13px}
+  #napravleniya .plan .room-card h3{grid-column:2;grid-row:1;flex-direction:row;align-items:baseline;justify-content:space-between;gap:16px;padding-top:24px}
+  #napravleniya .plan .room-card .rc-body{grid-column:2;grid-row:2;padding-bottom:24px}
+  #napravleniya .plan .room-card .btn{grid-column:3;grid-row:1;margin:22px 0 0;align-self:start}
+  #napravleniya .rc-list{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:36px}
+  #napravleniya .rc-list li:nth-last-child(2):nth-child(odd){border-bottom:0}
+  #napravleniya .room-card .door{left:362px}
+  #napravleniya .room-card:hover{transform:none}
+}
+@media (min-width:861px){
+  #napravleniya .plan .room-card.wide .rc-body{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px}
+  #napravleniya .room-card.wide .rc-list{grid-template-columns:minmax(0,1fr)}
+  #napravleniya .room-card.wide .rc-list li:nth-last-child(2):nth-child(odd){border-bottom:1px dashed rgba(74,52,38,.16)}
+  #napravleniya .room-card .door{display:none}
+}
+/* врачи: имя, специальность и кнопка на одной линии во всех карточках (клиника 12.11: «скачут ниже, выше - выровнять») */
+.doc .body h3{min-height:2.7em;line-height:1.35}
+.doc .body .exp{min-height:1.4em}
+.doc .body .btn{margin-top:auto}
+.doc .body .exp+.btn,.doc .body .spec+.btn{margin-top:auto}
+.doc .body{gap:6px}
+.doc .body>.btn{position:relative;top:0}
+.doc .body>*:nth-last-child(2){margin-bottom:12px}
+.os-side .btn{white-space:normal;flex-wrap:wrap;max-width:100%;row-gap:2px;text-align:left}
