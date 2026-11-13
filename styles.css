@@ -1332,3 +1332,6 @@ body.menu-open .gift-pill{display:none}
 .doc .body>.btn{position:relative;top:0}
 .doc .body>*:nth-last-child(2){margin-bottom:12px}
 .os-side .btn{white-space:normal;flex-wrap:wrap;max-width:100%;row-gap:2px;text-align:left}
+.op-works{display:inline-flex;align-items:center;gap:10px;margin-top:14px;color:var(--gold-3);font-weight:500;font-size:15px;border-bottom:1px solid rgba(192,168,48,.45);padding-bottom:2px}
+.op-works b{transition:transform var(--mid) var(--ease)}
+.op-works:hover b{transform:translateX(5px)}
