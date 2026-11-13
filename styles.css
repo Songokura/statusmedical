@@ -1211,20 +1211,6 @@ body.menu-open .gift-pill{display:none}
 @media (max-width:860px){.pw-badge{top:16px;bottom:auto}}
 .facts{background:var(--gr-1)}
 
-.zs-art{background:radial-gradient(420px 380px at 63% 50%,#FFFFFF,transparent 72%),linear-gradient(90deg,#FBF8F1 0,#F3EEE4 25%,#F7F2E8 25.1%)}
-.face-art .fa{stroke:#8A7550;stroke-width:2.2}
-.face-art .face,.face-art .hair{stroke:#6B5A3E;stroke-width:2.6}
-.face-art .hair2,.face-art .ear2,.face-art .eye2,.face-art .nose2,.face-art .neck2{stroke:#B8A57A;stroke-width:1.6}
-.face-art .lip{stroke:#A0705A;stroke-width:2.2}
-.face-art .pupil{fill:#6B5A3E}
-.zs-art .zp polyline{stroke:var(--gold);stroke-width:1.6;fill:none}
-.zs-art.drawn .fa{stroke-dasharray:none}
-/* прорисовка лица при появлении */
-.zs-art .fa{stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 2.4s cubic-bezier(.4,0,.2,1)}
-.zs-art .pupil{opacity:0;transition:opacity .6s 1.6s}
-.zs-art.in .fa{stroke-dashoffset:0}.zs-art.in .pupil{opacity:1}
-.zs-art .zp{opacity:0;transition:opacity .6s 1.8s}.zs-art.in .zp{opacity:1}
-@media (prefers-reduced-motion:reduce){.zs-art .fa{stroke-dasharray:none;transition:none}.zs-art .pupil,.zs-art .zp{opacity:1;transition:none}}
 .op-offer-top{margin-bottom:16px}
 .op-offer-top .of-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:1180px){.op-offer-top .of-list{grid-template-columns:minmax(0,1fr)}}
@@ -1305,3 +1291,15 @@ body.menu-open .gift-pill{display:none}
 @media (min-width:861px){.ops:has(.zs-art){grid-template-columns:minmax(0,6fr) minmax(0,6fr)}}
 @media (max-width:860px){.tr-plan-wrap{display:none}}
 @media (min-width:861px){.tour-grid{align-items:start}.tour-stage{position:sticky;top:calc(var(--hdr) + 24px)}}
+
+/* зоны пластики 13.11.2026: что исправляет + работа хирурга вместо цен */
+.op-fix{margin-top:16px;padding:16px 18px;border-radius:12px;background:#FBF8F1;border:1px solid var(--line)}
+.op-fix-k{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-3);font-weight:500;margin-bottom:10px}
+.op-fix ul{display:grid;gap:8px}
+.op-fix li{display:flex;gap:10px;font-size:15.5px;line-height:1.45;color:var(--walnut)}
+.op-fix li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-top:8px}
+.op-ba{margin-top:16px}
+.op-ba figcaption{font-size:14px;color:var(--mute)}
+/* акция: фото не шире своей колонки (aspect-ratio + min-height:100% распирали его на текст) */
+@media (min-width:861px){.gift-ph{aspect-ratio:auto;min-height:0;max-height:none;height:100%;min-width:0;overflow:hidden}.gift{min-height:520px}}
+@media (max-width:860px){.gift{grid-template-columns:minmax(0,1fr)}.gift-ph{min-height:0;min-width:0;aspect-ratio:16/10}}
