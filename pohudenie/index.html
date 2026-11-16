@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=20261116-1">
+<link rel="stylesheet" href="../styles.css?v=20261116-2">
 <script type="application/ld+json">
 [
  {
@@ -229,7 +229,7 @@
   </div>
 </section>
 
-<!-- ДО И ПОСЛЕ: места под фото, иллюстрации готовит клиника -->
+<!-- ДО И ПОСЛЕ: иллюстрации по историям пациентов, шторка сравнения -->
 <section class="sec stone" id="do-posle">
   <div class="wrap">
     <div class="sec-head rv">
@@ -237,9 +237,36 @@
       <h2 data-i18n="b.h2">Как меняется <em>фигура</em></h2>
     </div>
     <div class="pw-ba">
-      <figure class="pw-ba-ph rv"><div class="ph-box"><span data-i18n="b.ph">Фото до и после</span></div><figcaption data-i18n="b.c1">Иллюстрация</figcaption></figure>
-      <figure class="pw-ba-ph rv d1"><div class="ph-box"><span data-i18n="b.ph">Фото до и после</span></div><figcaption data-i18n="b.c1">Иллюстрация</figcaption></figure>
-      <figure class="pw-ba-ph rv d2"><div class="ph-box"><span data-i18n="b.ph">Фото до и после</span></div><figcaption data-i18n="b.c1">Иллюстрация</figcaption></figure>
+      <figure class="ba rv" data-ba>
+        <div class="ba-box" style="aspect-ratio:4/5">
+          <img class="ba-after" src="../assets/photos/pw-ba1-posle.webp" alt="После программы снижения веса (иллюстрация)" width="880" height="1100" loading="lazy" decoding="async">
+          <div class="ba-before"><img src="../assets/photos/pw-ba1-do.webp" alt="До программы снижения веса (иллюстрация)" width="880" height="1100" loading="lazy" decoding="async"></div>
+          <span class="ba-lbl l" data-i18n="ba.do">До</span><span class="ba-lbl r" data-i18n="ba.po">После</span>
+          <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Сравнить до и после">
+          <span class="ba-handle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        </div>
+        <figcaption class="pw-ba-cap"><b data-i18n="b.t1">Пациентка А.: 84 → 73&nbsp;кг за 3,5&nbsp;месяца</b><span data-i18n="b.c1">Иллюстрация</span></figcaption>
+      </figure>
+      <figure class="ba rv d1" data-ba>
+        <div class="ba-box" style="aspect-ratio:4/5">
+          <img class="ba-after" src="../assets/photos/pw-ba2-posle.webp" alt="После программы снижения веса (иллюстрация)" width="880" height="1100" loading="lazy" decoding="async">
+          <div class="ba-before"><img src="../assets/photos/pw-ba2-do.webp" alt="До программы снижения веса (иллюстрация)" width="880" height="1100" loading="lazy" decoding="async"></div>
+          <span class="ba-lbl l" data-i18n="ba.do">До</span><span class="ba-lbl r" data-i18n="ba.po">После</span>
+          <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Сравнить до и после">
+          <span class="ba-handle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        </div>
+        <figcaption class="pw-ba-cap"><b data-i18n="b.t2">Пациентка Б.: 104 → 89&nbsp;кг за 3&nbsp;месяца</b><span data-i18n="b.c1">Иллюстрация</span></figcaption>
+      </figure>
+      <figure class="ba rv d2" data-ba>
+        <div class="ba-box" style="aspect-ratio:4/5">
+          <img class="ba-after" src="../assets/photos/pw-ba3-posle.webp" alt="После программы снижения веса (иллюстрация)" width="880" height="1100" loading="lazy" decoding="async">
+          <div class="ba-before"><img src="../assets/photos/pw-ba3-do.webp" alt="До программы снижения веса (иллюстрация)" width="880" height="1100" loading="lazy" decoding="async"></div>
+          <span class="ba-lbl l" data-i18n="ba.do">До</span><span class="ba-lbl r" data-i18n="ba.po">После</span>
+          <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Сравнить до и после">
+          <span class="ba-handle" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+        </div>
+        <figcaption class="pw-ba-cap"><b data-i18n="b.t3">Мужчина: до −20&nbsp;кг на программе</b><span data-i18n="b.c1">Иллюстрация</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -371,6 +398,6 @@
 <script src="../assets/vendor/ScrollTrigger.min.js"></script>
 <script src="../assets/vendor/SplitText.min.js"></script>
 <script src="../assets/vendor/lenis.min.js"></script>
-<script src="../script.js?v=20261116-1"></script>
+<script src="../script.js?v=20261116-2"></script>
 </body>
 </html>

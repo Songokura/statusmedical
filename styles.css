@@ -1355,3 +1355,9 @@ body.menu-open .gift-pill{display:none}
 
 /* пластика 16.11.2026: на широких экранах фото от середины контента, без среза плеча */
 @media (min-width:861px){.hp-ph{left:max(54%,calc(50% + 40px));width:auto}}
+
+/* похудение 16.11.2026: шторки до/после в три колонки */
+.pw-ba .ba-box{background:#EBD9C4}
+.pw-ba .pw-ba-cap{flex-direction:column;align-items:flex-start;gap:2px}
+.pw-ba .pw-ba-cap span{font-size:13px;color:var(--mute)}
+.ba-handle svg{max-width:none}
