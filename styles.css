@@ -1361,3 +1361,72 @@ body.menu-open .gift-pill{display:none}
 .pw-ba .pw-ba-cap{flex-direction:column;align-items:flex-start;gap:2px}
 .pw-ba .pw-ba-cap span{font-size:13px;color:var(--mute)}
 .ba-handle svg{max-width:none}
+
+/* 17.11.2026 похудение: фото до/после внутри карточки истории, стороны чередуются */
+.stories{grid-template-columns:minmax(0,1fr);gap:24px}
+.story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,3vw,44px);align-items:center}
+.story .st-data{display:flex;flex-direction:column;gap:16px;min-width:0}
+.story .st-data>p{color:var(--mute);font-size:15px}
+.story:nth-child(even) .st-ba{order:2}
+.st-ba .ba-box{background:#EBD9C4;max-height:min(640px,80svh);margin-inline:auto}
+.story.st-short{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}
+.story .st-note{font-size:13px!important;color:var(--mute)}
+@media (max-width:860px){
+  .story,.story.st-short{grid-template-columns:minmax(0,1fr)}
+  .story:nth-child(even) .st-ba{order:0}
+}
+
+/* 17.11.2026 чек-апы: цена было/стало и подарки */
+#chekap .card-top .price{display:flex;flex-direction:column;align-items:flex-start;gap:2px;line-height:1.1}
+#chekap .price s{font-size:.62em;color:var(--mute);text-decoration-thickness:1.5px;text-decoration-color:#B4553F}
+#chekap .price b{font-weight:500}
+.c-gift{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;background:linear-gradient(135deg,rgba(226,205,106,.22),rgba(226,205,106,.08));border:1px dashed rgba(192,168,48,.7);color:var(--walnut)}
+.c-gift>svg{flex:none;width:36px;height:36px;padding:8px;border-radius:10px;background:var(--gold);color:var(--walnut-3)}
+.c-gift>div{display:grid;gap:6px;min-width:0;flex:1}
+.c-gift-t{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.c-save{font-size:12.5px;font-weight:600;text-transform:none;letter-spacing:0;padding:3px 9px;border-radius:999px;background:var(--walnut);color:var(--gold-2)}
+.c-gift ul{display:grid;gap:4px}
+.c-gift li{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;font-size:14px;line-height:1.35}
+.c-gift li span{flex:1 1 140px;min-width:0}
+.c-gift li s{color:var(--mute);font-size:13px}
+.c-gift li b{color:var(--gold-3);font-weight:600}
+#chekap .card-top .price{flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:4px 12px}
+#chekap .c-gift{margin:14px 0 18px}
+
+/* 17.11.2026 всплывающее окно акции */
+.gift-pop{position:fixed;left:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:48;width:min(400px,calc(100vw - 32px));display:grid;gap:12px;padding:22px 22px 20px;border-radius:20px;background:var(--gr-1);color:#fff;border:1px solid rgba(226,205,106,.45);box-shadow:0 30px 80px -24px rgba(0,0,0,.65);opacity:0;visibility:hidden;transform:translateY(24px) scale(.98);transform-origin:left bottom;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s linear .35s}
+.gift-pop.show{opacity:1;visibility:visible;transform:none;transition:opacity .35s var(--ease),transform .35s var(--ease),visibility 0s}
+.gpo-x{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:rgba(255,255,255,.7)}
+.gpo-x:hover{background:rgba(255,255,255,.1);color:#fff}
+.gpo-head{display:flex;align-items:center;gap:10px;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-2);padding-right:40px}
+.gpo-head .gp-ic{width:36px;height:36px;padding:8px}
+.gpo-t{font-size:clamp(19px,1.6vw,22px);font-weight:500;line-height:1.25;color:#fff}
+.gpo-x2{font-size:14px;line-height:1.45;color:rgba(255,255,255,.75)}
+.gpo-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
+.gpo-price{display:flex;align-items:baseline;gap:10px}
+.gpo-price s{color:rgba(255,255,255,.55);font-size:16px}
+.gpo-price b{font-size:30px;font-weight:600;color:var(--gold-2);line-height:1}
+.gpo-time{font-size:13px;color:rgba(255,255,255,.7)}
+.gpo-time i{font-style:normal;font-weight:600;color:#fff;font-variant-numeric:tabular-nums}
+.gift-pop .btn{justify-content:center}
+body.menu-open .gift-pop{display:none}
+@media (max-width:860px){.gift-pop{left:12px;bottom:calc(76px + env(safe-area-inset-bottom));width:calc(100vw - 24px);padding:18px 18px 16px;gap:10px}.gpo-x2{font-size:13.5px}}
+@media (prefers-reduced-motion:reduce){.gift-pop{transition:none}}
+
+/* 17.11.2026 верхняя строка: миссия, руководство, служба поддержки, график */
+.topbar{display:none;background:var(--gr-1);color:rgba(255,255,255,.78);font-size:13.5px;position:relative;z-index:51}
+.tb-in{height:38px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.tb-nav{display:flex;gap:26px}
+.tb-nav a{white-space:nowrap;transition:color var(--fast)}
+.tb-nav a:hover{color:var(--gold-2)}
+.tb-addr{white-space:nowrap;color:rgba(255,255,255,.55)}
+@media (min-width:1301px){
+  .topbar{display:block}
+  .hero,.hero-chk,.hp-hero{min-height:calc(100svh - var(--hdr) - 38px)}
+}
+@media (min-width:1301px) and (max-width:1439px){.tb-addr{display:none}}
+#chekap .c-gift{margin-top:auto}
+#chekap .c-gift + .btn{margin-top:0}
+#chekap .compose-more + .c-gift,#chekap .compose + .c-gift{margin-top:auto;}
+#chekap .c-gift{margin-bottom:18px}
+#chekap .compose{margin-bottom:18px}

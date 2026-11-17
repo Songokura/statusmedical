@@ -436,15 +436,39 @@
     '<span class="gp-t"><b data-i18n="gp.t">Экспресс-чек-ап в подарок</b><span><span data-i18n="gp.x">Запишитесь сейчас, осталось</span> <i class="num" data-timer>24:00:00</i></span></span></a>' +
     '<button class="gp-x" type="button" aria-label="Свернуть"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
   document.body.appendChild(gp);
-  var GPS = 'statusmed-gift-min';
-  try { if (sessionStorage.getItem(GPS)) gp.classList.add('min'); } catch (e) {}
-  $('.gp-x', gp).addEventListener('click', function () { gp.classList.add('min'); try { sessionStorage.setItem(GPS, '1'); } catch (e) {} });
-  gp.addEventListener('click', function (e) { if (gp.classList.contains('min') && !e.target.closest('.gp-x')) { e.preventDefault(); gp.classList.remove('min'); try { sessionStorage.removeItem(GPS); } catch (er) {} } }, true);
-  setTimeout(function () { gp.classList.add('show'); }, 2500);
-  /* через 12 секунд плашка сворачивается в значок, чтобы не закрывать текст; по наведению раскрывается */
-  setTimeout(function () { gp.classList.add('min'); }, 14500);
-  gp.addEventListener('mouseenter', function () { if (matchMedia('(hover:hover)').matches) gp.classList.remove('min'); });
-  gp.addEventListener('mouseleave', function () { if (matchMedia('(hover:hover)').matches) gp.classList.add('min'); });
+  var GPS = 'statusmed-gift-min', GPOP = 'statusmed-gift-pop';
+  /* всплывающее окно акции (17.11.2026): один раз за визит, текст под страницу; закрыли - остаётся значок */
+  var path = location.pathname, pg = /\/plastika\//.test(path) ? 'pl' : (/\/pohudenie\//.test(path) ? 'wt' : 'main');
+  var POP_T = { main: 'Запишитесь на приём - экспресс-чек-ап в подарок', pl: 'Запишитесь на консультацию хирурга - экспресс-чек-ап в подарок', wt: 'Запишитесь на программу снижения веса - экспресс-чек-ап в подарок' };
+  var POP_WA = { main: GIFT_WA, pl: 'Здравствуйте. Хочу записаться на консультацию пластического хирурга и получить экспресс-чек-ап в подарок.', wt: 'Здравствуйте. Хочу записаться на программу снижения веса и получить экспресс-чек-ап в подарок.' };
+  var pop = document.createElement('aside');
+  pop.className = 'gift-pop';
+  pop.setAttribute('role', 'dialog'); pop.setAttribute('aria-label', 'Акция центра');
+  pop.innerHTML = '<button class="gpo-x" type="button" aria-label="Закрыть"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+    '<div class="gpo-head"><svg class="gp-ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1.5S9 8 12 8zm0 0c2-4 6-4 6-1.5S15 8 12 8z"/></svg><span data-i18n="gpo.k">Акция центра</span></div>' +
+    '<b class="gpo-t" data-i18n="gpo.t.' + pg + '">' + POP_T[pg] + '</b>' +
+    '<p class="gpo-x2" data-i18n="gpo.x">Быстрая оценка состояния организма на квантовом биоанализаторе: минута с датчиком в руке и отчёт на 40 страниц.</p>' +
+    '<div class="gpo-row"><span class="gpo-price"><s class="num">10&nbsp;000&nbsp;₸</s><b class="num">0&nbsp;₸</b></span><span class="gpo-time"><span data-i18n="pr.left">До конца акции</span> <i class="num" data-timer>24:00:00</i></span></div>' +
+    '<a class="btn gold wa" href="' + WA + encodeURIComponent(POP_WA[pg]) + '" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i18n="pr.btn">Записаться и забрать подарок</span></a>';
+  document.body.appendChild(pop);
+  function popShow() { pop.classList.add('show'); gp.classList.remove('show'); }
+  function popHide() { pop.classList.remove('show'); gp.classList.add('min', 'show'); try { sessionStorage.setItem(GPOP, '1'); sessionStorage.setItem(GPS, '1'); } catch (e) {} }
+  $('.gpo-x', pop).addEventListener('click', popHide);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && pop.classList.contains('show')) popHide(); });
+  $('.btn', pop).addEventListener('click', function () { setTimeout(popHide, 300); });
+  var seen = false;
+  try { seen = !!sessionStorage.getItem(GPOP); } catch (e) {}
+  gp.classList.add('min');
+  /* значок: по нажатию снова открывает окно акции */
+  gp.addEventListener('click', function (e) { if (!e.target.closest('.gp-x')) { e.preventDefault(); e.stopPropagation(); popShow(); } }, true);
+  if (seen) setTimeout(function () { gp.classList.add('show'); }, 2500);
+  else {
+    var popAuto = true, popT;
+    var autoPop = function () { if (!popAuto) return; popAuto = false; clearTimeout(popT); window.removeEventListener('scroll', onSc); popShow(); };
+    var onSc = function () { if (window.scrollY > innerHeight * 1.2) setTimeout(autoPop, 600); };
+    popT = setTimeout(autoPop, 9000);
+    window.addEventListener('scroll', onSc, { passive: true });
+  }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function tick() {
     var left = Math.max(0, giftEnd() - Date.now()), t = Math.floor(left / 1000);
