@@ -1038,7 +1038,7 @@ body.menu-open .gift-pill{display:none}
 @media (max-width:860px){.osms-grid,.os-steps{grid-template-columns:minmax(0,1fr)}.os-side .btn{width:100%;justify-content:center}}
 
 /* миссия и руководитель */
-.mis-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(24px,4vw,64px);align-items:start}
+.mis-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:start}
 .mis-q{padding:0 0 22px 22px;border-left:2px solid var(--gold);margin-bottom:22px}
 .mis-q h3{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-3);font-weight:500;margin-bottom:8px}
 .mis-q p{font-size:clamp(18px,1.5vw,22px);line-height:1.5;color:var(--ink)}
@@ -1055,6 +1055,21 @@ body.menu-open .gift-pill{display:none}
 .lead-card .spec{color:var(--gold-2);font-size:15px}
 .lead-card p{color:rgba(255,255,255,.75);font-size:14.5px}
 @media (max-width:860px){.mis-grid,.mis-vals{grid-template-columns:minmax(0,1fr)}.lead-card{position:static}.lead-card figure{aspect-ratio:1/1}.lead-card .btn{width:100%;justify-content:center}}
+
+/* руководство (23.11.2026) */
+.ruk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,32px)}
+.ruk-card{display:flex;flex-direction:column;border-radius:calc(var(--r) + 4px);overflow:hidden;background:#fff;box-shadow:0 1px 0 var(--line),0 18px 40px -28px rgba(83,63,49,.45)}
+.ruk-ph{margin:0;aspect-ratio:4/5;overflow:hidden;background:#8F8C8E}
+.ruk-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 14%;transition:transform var(--slow) var(--ease)}
+.ruk-card:hover .ruk-ph img{transform:scale(1.03)}
+.ruk-ph.none{display:grid;place-items:center;background:var(--gr-2)}
+.ruk-mono{font-size:clamp(56px,6vw,96px);letter-spacing:.06em;color:var(--gold-2);font-weight:300;border:1px solid rgba(226,205,106,.45);border-radius:50%;width:1.9em;height:1.9em;display:grid;place-items:center}
+.ruk-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}
+.ruk-role{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-3)}
+.ruk-body h3{font-size:clamp(19px,1.5vw,23px);line-height:1.25;color:var(--ink)}
+.ruk-cta{margin-top:clamp(24px,3vw,40px);display:flex;justify-content:center}
+@media (max-width:860px){.ruk-grid{grid-template-columns:minmax(0,1fr)}.ruk-ph{aspect-ratio:1/1}.ruk-cta .btn{width:100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){.ruk-ph img{transition:none}}
 
 /* служба поддержки */
 .support{background:var(--gr-2)}
