@@ -43,6 +43,7 @@
     if (!el) return;
     e.preventDefault();
     closeMenu();
+    ckReveal(el);
     scrollTo(el);
     history.replaceState(null, '', id);
   });
@@ -89,9 +90,16 @@
 
   /* ---------- длинный состав чек-апа: первые пункты, остальное по кнопке ---------- */
   $$('ul.compose').forEach(function (ul) {
-    var n = ul.children.length;
-    if (n <= 8) return;
+    var items = $$(':scope > li:not(.grp)', ul), n = items.length, SHOW = 6;
+    if (n <= SHOW + 2) return;
     ul.classList.add('clip');
+    var lis = $$(':scope > li', ul), seen = 0;
+    lis.forEach(function (li) { if (!li.classList.contains('grp')) { seen++; if (seen > SHOW) li.classList.add('xtra'); } });
+    lis.forEach(function (li, i) {
+      if (!li.classList.contains('grp')) return;
+      var nx = lis[i + 1];
+      if (nx && nx.classList.contains('xtra')) li.classList.add('xtra');
+    });
     var b = document.createElement('button');
     b.type = 'button'; b.className = 'compose-more'; b.setAttribute('aria-expanded', 'false');
     b.innerHTML = '<span data-i18n="c.more">Весь состав</span> <span class="num">(' + n + ')</span>';
@@ -103,6 +111,50 @@
       if (hasGsap) ScrollTrigger.refresh();
     });
   });
+
+  /* ---------- чек-апы: вкладки, пол ребёнка, переход по якорю ---------- */
+  var ckTabs = $$('.ck-tabs [role="tab"]');
+  function ckOpen(tab, focus) {
+    ckTabs.forEach(function (t) {
+      var on = t === tab, pn = document.getElementById(t.getAttribute('aria-controls'));
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      if (pn) pn.hidden = !on;
+    });
+    if (focus) tab.focus();
+    if (hasGsap) ScrollTrigger.refresh();
+  }
+  ckTabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { ckOpen(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      ckOpen(ckTabs[(i + d + ckTabs.length) % ckTabs.length], true);
+    });
+  });
+  $$('.ck-sex button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = b.getAttribute('data-g'), pn = b.closest('.ck-panel');
+      $$('.ck-sex button', pn).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      $$('.room-card[data-g]', pn).forEach(function (c) { c.hidden = c.getAttribute('data-g') !== g; });
+      if (hasGsap) ScrollTrigger.refresh();
+    });
+  });
+  function ckReveal(el) {
+    var pn = el.closest ? el.closest('.ck-panel') : null; if (!pn) return;
+    var tab = document.getElementById(pn.getAttribute('aria-labelledby'));
+    if (pn.hidden && tab) ckOpen(tab);
+    if (el.hidden && el.getAttribute('data-g')) { var sb = $('.ck-sex button[data-g="' + el.getAttribute('data-g') + '"]', pn); if (sb) sb.click(); }
+  }
+  function ckHash() {
+    var id = location.hash.slice(1); if (!id) return;
+    var el = document.getElementById(id); if (!el || !el.closest('.ck-panel')) return;
+    ckReveal(el);
+    setTimeout(function () { scrollTo(el); }, 60);
+  }
+  ckHash();
+  window.addEventListener('hashchange', ckHash);
 
   /* ---------- появление блоков ---------- */
   var io = new IntersectionObserver(function (es) {
