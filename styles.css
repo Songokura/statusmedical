@@ -118,7 +118,7 @@ h1 em,h2 em{font-style:normal;color:#9E871C;font-weight:400}
 .lang button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .burger{display:none;width:44px;height:44px;flex:none;flex-direction:column;justify-content:center;gap:5px;align-items:center;border-radius:12px}
 .burger i{width:22px;height:2px;background:var(--walnut);transition:transform var(--mid) var(--ease),opacity var(--mid)}
-/* меню: порог бургера = порог оверлея = 1300px (по казахским подписям, с пунктом МӘМС с 12.11.2026) */
+/* меню: порог бургера = порог оверлея = 1365px (по казахским подписям, с пунктом МӘМС и «Пластикалық хирургия» с 25.11.2026 с 12.11.2026) */
 .menu{position:fixed;inset:0;padding:calc(var(--hdr) + 20px) var(--pad) calc(32px + env(safe-area-inset-bottom));background:var(--stone);z-index:49;display:flex;flex-direction:column;gap:14px;font-size:22px;overflow-y:auto;visibility:hidden;transform:translateY(-12px);opacity:0;pointer-events:none;transition:transform var(--mid) var(--ease),opacity var(--mid) var(--ease),visibility 0s linear var(--mid)}
 .menu > a:not(.btn){padding:8px 0;border-bottom:1px solid var(--line);font-weight:300}
 .menu-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
@@ -540,8 +540,8 @@ body.menu-open .burger i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
 
 /* ---------- адаптив ---------- */
-@media (min-width:1301px){.menu{display:none}}
-@media (max-width:1300px){.nav{display:none}.burger{display:flex}.nav + .hdr-right{margin-left:auto}}
+@media (min-width:1366px){.menu{display:none}}
+@media (max-width:1365px){.nav{display:none}.burger{display:flex}.nav + .hdr-right{margin-left:auto}}
 @media (max-width:1180px){
   .docs{grid-template-columns:repeat(3,minmax(0,1fr))}
   .plan{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -1223,7 +1223,7 @@ body.menu-open .gift-pill{display:none}
 }
 .pw-steps{list-style:none}
 
-@media (min-width:1301px) and (max-width:1499px){.hdr-phone{display:none}}
+@media (min-width:1366px) and (max-width:1499px){.hdr-phone{display:none}}
 @media (max-width:860px){.pw-badge{top:16px;bottom:auto}}
 .facts{background:var(--gr-1)}
 
@@ -1437,11 +1437,11 @@ body.menu-open .gift-pop{display:none}
 .tb-nav a{white-space:nowrap;transition:color var(--fast)}
 .tb-nav a:hover{color:var(--gold-2)}
 .tb-addr{white-space:nowrap;color:rgba(255,255,255,.55)}
-@media (min-width:1301px){
+@media (min-width:1366px){
   .topbar{display:block}
   .hero,.hero-chk,.hp-hero{min-height:calc(100svh - var(--hdr) - 38px)}
 }
-@media (min-width:1301px) and (max-width:1439px){.tb-addr{display:none}}
+@media (min-width:1366px) and (max-width:1439px){.tb-addr{display:none}}
 #chekap .c-gift{margin-top:auto}
 #chekap .c-gift + .btn{margin-top:0}
 #chekap .compose-more + .c-gift,#chekap .compose + .c-gift{margin-top:auto;}
