@@ -319,6 +319,9 @@
       if (f !== 'all') docsOpen();
       if (hasGsap) { gsap.from('#docs .doc:not(.hidden)', { y: 16, opacity: 0, duration: .5, stagger: .03, clearProps: 'all' }); ScrollTrigger.refresh(); }
     }); });
+    $$('[data-doc-f]').forEach(function (a) { a.addEventListener('click', function () {
+      var b = $('.filters button[data-f="' + a.getAttribute('data-doc-f') + '"]'); if (b) b.click();
+    }); });
     if (hasGsap && !reduced) gsap.from('#docs .doc', { y: 30, opacity: 0, duration: .8, stagger: .04, scrollTrigger: { trigger: '#docs', start: 'top 80%' }, clearProps: 'transform,opacity' });
   }
 
