@@ -1067,8 +1067,9 @@ body.menu-open .gift-pill{display:none}
 .ruk-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:8px}
 .ruk-role{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-3)}
 .ruk-body h3{font-size:clamp(19px,1.5vw,23px);line-height:1.25;color:var(--ink)}
-.ruk-cta{margin-top:clamp(24px,3vw,40px);display:flex;justify-content:center}
+.ruk-cta{margin-top:clamp(24px,3vw,40px);display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 @media (max-width:860px){.ruk-grid{grid-template-columns:minmax(0,1fr)}.ruk-ph{aspect-ratio:1/1}.ruk-cta .btn{width:100%;justify-content:center}}
+@media (max-width:560px){.ruk-tel{flex-direction:column;gap:2px;line-height:1.25;padding-block:10px}.ruk-tel>span:first-child{font-size:.85em;opacity:.8}}
 @media (prefers-reduced-motion:reduce){.ruk-ph img{transition:none}}
 
 /* служба поддержки */
