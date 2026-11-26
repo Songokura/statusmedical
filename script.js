@@ -73,7 +73,7 @@
 
   /* ---------- WhatsApp ---------- */
   var WA = 'https://wa.me/77052221462?text=';
-  $$('[data-wa]').forEach(function (a) { a.setAttribute('href', WA + encodeURIComponent(a.getAttribute('data-wa'))); if (!a.target) { a.target = '_blank'; a.rel = 'noopener'; } });
+  $$('[data-wa]').forEach(function (a) { var to = a.getAttribute('data-wa-to'); a.setAttribute('href', (to ? 'https://wa.me/' + to + '?text=' : WA) + encodeURIComponent(a.getAttribute('data-wa'))); if (!a.target) { a.target = '_blank'; a.rel = 'noopener'; } });
   $$('form[data-tpl]').forEach(function (f) {
     f.addEventListener('submit', function (e) {
       e.preventDefault();
